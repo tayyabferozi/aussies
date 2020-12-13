@@ -5,6 +5,8 @@
 export const Constants = {
   defaultApiURI: "https://serene-fortress-81927.herokuapp.com/api",
   defaultImageURI: "https://serene-fortress-81927.herokuapp.com/images/",
+  // defaultApiURI: "http://localhost:5000/api",
+  // defaultImageURI: "http://localhost:5000/images/",
 };
 
 export const getParam = (paramName) => {

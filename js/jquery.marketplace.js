@@ -321,7 +321,7 @@ export class UserCtrl {
                 <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
               </div>
               <div class="t-product-overlay" style="position:relative;">
-                <h5><a href="product-details.html?servie=${serviceId}">${serviceName}</a></h5>
+                <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
                 <span>${serviceCategory}/${serviceSubCategory}</span>
                 <!--<p>14 Sales</p>-->
                 <div class="t-product-meta">
@@ -331,7 +331,7 @@ export class UserCtrl {
                     <i class="far fa-star"></i>
                     <i class="far fa-star"></i>
                     <i class="far fa-star"></i>-->
-                    <a href="product-details.html?servie=${serviceId}">More Details</a>
+                    <a href="product-details.html?service=${serviceId}">More Details</a>
                   </div>
                   <h6>$${servicePrice}</h6>
                 </div>
