@@ -219,16 +219,23 @@
       <!-- product-area -->
       <section class="product-area gray-bg pt-120 pb-120">
         <div class="container-fluid">
-          <div class="row" style="display: none" id="filter">
+          <div
+            class="row"
+            style="display: flex; align-items: center; justify-content: center"
+            id="filter"
+          >
             <div class="col-4">
-              <label for="filterBy"><h5>Filter By:</h5></label>
+              <label for="stateFilter"><h5>Filter State:</h5></label>
             </div>
             <div class="col-5">
-              <select class="custom-select my-2 mx-auto" id="filterBy">
-                <option value="">Select any</option>
-                <option value="category">Category</option>
-                <option value="subcategory">Sub-category</option>
-                <option value="state">State</option>
+              <select class="custom-select my-2 mx-auto" id="stateFilter">
+                <option value="National">National</option>
+                <option value="New South Wales">New South Wales</option>
+                <option value="Queensland">Queensland</option>
+                <option value="Victoria">Victoria</option>
+                <option value="Tasmania">Tasmania</option>
+                <option value="Western Australia">Western Australia</option>
+                <option value="South Australia">South Australia</option>
               </select>
             </div>
           </div>
@@ -736,49 +743,46 @@
       import { UserCtrl } from "./js/jquery.marketplace.js";
       import { Constants, getParam, isEmpty } from "./js/utils/utils.js";
 
-      const statesArr = [
-        "New South Wales",
-        "Queensland",
-        "Victoria",
-        "Tasmania",
-        "Western Australia",
-        "South Australia",
-        "National",
-      ];
-      const categoriesArr = [];
-      const subCategoriesArr = [];
-      let queryParam = "filter-by-";
+      const selectedCategory = getParam("category");
+      const selectedSubCategory = getParam("sub-catgory");
+      const selectedState = getParam("state");
 
-      //     UserCtrl.GetServiceList();
-      $(document).ready(function () {
-        const filter = getParam("filter");
-        const subFilter = getParam("param");
+      const fetchServices = (selectedState) => {
+        axios
+          .post(`${Constants.defaultApiURI}services/filtered-by-state`, {
+            state: selectedState ? selectedState : "National",
+          })
+          .then((res) => {
+            let { services } = res.data;
+            let servicesMarkup = "";
 
-        let paramName = filter;
+            if (!isEmpty(selectedCategory)) {
+              services = services.filter((el) => {
+                return el.category === selectedCategory;
+              });
+              console.log(services);
+              console.log(selectedCategory);
+            }
 
-        if (!isEmpty(filter) && subFilter) {
-          axios
-            .post(`${Constants.defaultApiURI}/services/filtered-by-${filter}`, {
-              [paramName]: subFilter,
-            })
-            .then((res) => {
-              console.log(res.data);
-              const { services } = res.data;
-              let servicesMarkup = "";
+            if (!isEmpty(selectedSubCategory)) {
+              services = services.filter((el) => {
+                return el.subCategory === selectedSubCategory;
+              });
+            }
 
-              services.forEach((service) => {
-                let heroThumbnail;
-                const serviceName = service.name;
-                const servicePrice = service.price;
-                const serviceCategory = service.category;
-                const serviceSubCategory = service.subCategory;
-                const serviceId = service._id;
-                if (!isEmpty(service.thumbnails)) {
-                  heroThumbnail =
-                    Constants.defaultImageURI + service.thumbnails[0].filename;
-                }
+            services.forEach((service) => {
+              let heroThumbnail;
+              const serviceName = service.name;
+              const servicePrice = service.price;
+              const serviceCategory = service.category;
+              const serviceSubCategory = service.subCategory;
+              const serviceId = service._id;
+              if (!isEmpty(service.thumbnails)) {
+                heroThumbnail =
+                  Constants.defaultImageURI + service.thumbnails[0].filename;
+              }
 
-                servicesMarkup += `
+              servicesMarkup += `
                 <div class="col-lg-4 col-md-6">
                   <div class="single-product t-single-product mb-30">
                       <div class="product-img">
@@ -786,7 +790,11 @@
                       </div>
                       <div class="t-product-overlay" style="position:relative;">
                         <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                        <span>${serviceCategory}/${serviceSubCategory}</span>
+                        <span><a href="all-products.html?category=${
+                          serviceCategory + "&state=" + selectedState
+                        }">${serviceCategory}</a> / <a href="all-products.html?sub-category=${
+                serviceSubCategory + "&state=" + selectedState
+              }">${serviceSubCategory}</a></span>
                         <!--<p>14 Sales</p>-->
                         <div class="t-product-meta">
                           <div class="t-product-rating">
@@ -795,86 +803,54 @@
                             <i class="far fa-star"></i>
                             <i class="far fa-star"></i>
                             <i class="far fa-star"></i>-->
-                            <a href="product-details.html?service=${serviceId}">More Details</a>
+                            <a href="product-details.html?servie=${serviceId}">More Details</a>
                           </div>
                           <h6>$${servicePrice}</h6>
                         </div>
                       </div>
                   </div>
                 </div>`;
-              });
-
-              $("#dvProduct").html(servicesMarkup);
             });
-        } else {
-          UserCtrl.getAllServices();
-        }
 
-        let categoriesFetchSuccess = false;
-        let sellersFetchSuccess = false;
-
-        axios.get(`${Constants.defaultApiURI}/categories`).then((res) => {
-          const { categories } = res.data;
-          categories.forEach((cat) => {
-            categoriesArr.push(cat.name);
-            cat.subCategories.forEach((subCat) => {
-              subCategoriesArr.push(subCat.name);
-            });
+            $("#dvProduct").html(servicesMarkup);
+          })
+          .catch((err) => {
+            console.log(err);
+            let errorMessage;
+            if (err.request) {
+              errorMessage = "Network Error!";
+            } else if (err.response) {
+              errorMessage = err.response.data.errors[0];
+            } else {
+              errorMessage = "Something went wrong";
+            }
+            $("#dvProduct").html(
+              `<h4 class='text-danger col-12 text-center'>${errorMessage}</h4>`
+            );
           });
-          $("#filter").css("display", "flex");
-        });
+      };
 
-        // axios.get(`${Constants.defaultApiURI}/cateogories`)
+      $(document).ready(function () {
+        $("#stateFilter").change(function () {
+          const selectedState = $(this).val();
 
-        $("#filterBy").change(function () {
-          const filter = $(this).val();
-          let arr;
-          let label;
-          let subFilterMarkup = "";
-          if (filter === "category") {
-            arr = categoriesArr;
-            queryParam += "category";
-            label = "Category";
-          } else if (filter === "subcategory") {
-            arr = subCategoriesArr;
-            queryParam += "subcategory";
-            label = "Sub-category";
-          } else if (filter === "state") {
-            arr = statesArr;
-            queryParam += "state";
-            label = "State";
-          } else {
-            $("#sub-filter").empty();
-            return;
-          }
+          // if(!isEmpty(selectedSubCategory) {
 
-          subFilterMarkup = `
-                        <div class="col-4">
-                          <label for="sub-filter"><h5>${label} Name:</h5></label>
-                        </div>
-                        <div class="col-5">
-                        <select class="custom-select mb-5 mx-auto" id="sub-filter-opt">
-                          <option value="">Select any</option>`;
-          arr.forEach((item) => {
-            subFilterMarkup += `
-                        <option value="${item}">${item}</option>
-                        `;
-          });
-          subFilterMarkup += "</select></div></div>";
+          // }
 
-          $("#sub-filter").html(subFilterMarkup);
-        });
-
-        $("#sub-filter").change(function () {
           window.location.href =
             "//" +
             location.host +
             location.pathname +
-            "?filter=" +
-            $("#filterBy > option:selected").val() +
-            "&param=" +
-            $("#sub-filter-opt > option:selected").val();
+            "?state=" +
+            selectedState;
         });
+
+        if (!isEmpty(selectedState)) {
+          $(`#stateFilter > [value='${selectedState}']`).attr("selected", true);
+        }
+
+        fetchServices(selectedState);
       });
     </script>
   </body>
