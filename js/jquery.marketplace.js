@@ -1,4 +1,9 @@
-﻿import { Constants, getParam, isEmpty } from "./utils/utils.js";
+﻿import {
+  Constants,
+  generateErrorMarkup,
+  getParam,
+  isEmpty,
+} from "./utils/utils.js";
 // "use strict";
 
 // if (!String.prototype.includes) {
@@ -315,29 +320,29 @@ export class UserCtrl {
           }
 
           servicesMarkup += `
-        <div class="col-lg-4 col-md-6">
-          <div class="single-product t-single-product mb-30">
-              <div class="product-img">
-                <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
-              </div>
-              <div class="t-product-overlay" style="position:relative;">
-                <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                <span>${serviceCategory}/${serviceSubCategory}</span>
-                <!--<p>14 Sales</p>-->
-                <div class="t-product-meta">
-                  <div class="t-product-rating">
-                    <!--<i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>-->
-                    <a href="product-details.html?service=${serviceId}">More Details</a>
-                  </div>
-                  <h6>$${servicePrice}</h6>
+          <div class="col-lg-4 col-md-6">
+            <div class="single-product t-single-product mb-30">
+                <div class="product-img">
+                  <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
                 </div>
-              </div>
-          </div>
-        </div>`;
+                <div class="t-product-overlay" style="position:relative;">
+                  <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
+                  <span>${serviceCategory}/${serviceSubCategory}</span>
+                  <!--<p>14 Sales</p>-->
+                  <div class="t-product-meta">
+                    <div class="t-product-rating">
+                      <!--<i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>-->
+                      <a href="product-details.html?service=${serviceId}">More Details</a>
+                    </div>
+                    <h6>$${servicePrice}</h6>
+                  </div>
+                </div>
+            </div>
+          </div>`;
         });
 
         $("#dvProduct").html(servicesMarkup);
@@ -348,7 +353,7 @@ export class UserCtrl {
     const serviceId = getParam("service");
 
     axios
-      .get(`${Constants.defaultApiURI}/services/service-details/${serviceId}`)
+      .get(`${Constants.defaultApiURI}services/service-details/${serviceId}`)
       .then((res) => {
         const service = res.data.service;
         let thumbnail;
@@ -376,6 +381,27 @@ export class UserCtrl {
         $("#lblSellerEmail").html(sellerEmail);
 
         $("#lblSellerPhone").html(sellerPhone);
+      })
+      .catch((err) => {
+        let errorMessage;
+        if (err.response) {
+          console.log(err.response.data.errors[0]);
+          errorMessage = err.response.data.errors[0];
+        } else {
+          console.log(err.message);
+          errorMessage = err.message;
+        }
+        $("#imgThumbnail").html(generateErrorMarkup(errorMessage));
+
+        $("#dvServiceDescription").empty();
+
+        $("#lblServicePrice").empty();
+
+        $("#lblSellerName").empty();
+
+        $("#lblSellerEmail").empty();
+
+        $("#lblSellerPhone").empty();
       });
   }
 }

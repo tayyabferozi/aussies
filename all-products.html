@@ -220,20 +220,21 @@
       <section class="product-area gray-bg pt-120 pb-120">
         <div class="container-fluid">
           <div
-            class="row"
-            style="display: flex; align-items: center; justify-content: center"
+            class="row d-flex justify-content-center align-items-center"
             id="filter"
           >
-            <div
-              class="col-lg-4 col-md-4 col-sm-12 text-lg-right text-sm-center"
-            >
-              <label class="m-0" for="stateFilter"
+            <div class="col-md-4 col-sm-12 text-center text-md-right">
+              <label class="m-0 mr-4" for="stateFilter"
                 ><h5 class="m-0">Select Your Preferred State:</h5></label
               >
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <select class="custom-select my-2 mx-auto" id="stateFilter">
-                <option value="National">National</option>
+            <div class="col-md-4 col-sm-12 text-center text-md-left">
+              <select
+                class="custom-select my-2"
+                style="width: 175px"
+                id="stateFilter"
+              >
+                <option value="Australia Wide">Australia Wide</option>
                 <option value="New South Wales">New South Wales</option>
                 <option value="Queensland">Queensland</option>
                 <option value="Victoria">Victoria</option>
@@ -474,15 +475,7 @@
             <div class="col-12">
               <div class="pagination-wrap mt-30 text-center">
                 <nav>
-                  <ul class="pagination" id="ulPagination">
-                    <!--<li class="page-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
-                                        <li class="page-item"><a href="#">01</a></li>
-                                        <li class="page-item"><a href="#">02</a></li>
-                                        <li class="page-item active"><a href="#">03</a></li>
-                                        <li class="page-item"><a href="#">...</a></li>
-                                        <li class="page-item"><a href="#">10</a></li>
-                                        <li class="page-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>-->
-                  </ul>
+                  <ul class="pagination" id="ulPagination"></ul>
                 </nav>
               </div>
             </div>
@@ -745,24 +738,46 @@
     <script type="module" src="./js/jquery.marketplace.js"></script>
     <script type="module">
       import { UserCtrl } from "./js/jquery.marketplace.js";
-      import { Constants, getParam, isEmpty } from "./js/utils/utils.js";
+      import {
+        Constants,
+        getParam,
+        isEmpty,
+        generateErrorMarkup,
+      } from "./js/utils/utils.js";
+
+      let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
 
       const selectedCategory = getParam("category");
       const selectedSubCategory = getParam("sub-catgory");
       const selectedState = getParam("state");
+      let page = getParam("page");
 
       const fetchServices = (selectedState) => {
         axios
-          .post(`${Constants.defaultApiURI}services/filtered-by-state`, {
-            state: selectedState ? selectedState : "National",
-          })
+          .post(
+            `${Constants.defaultApiURI}services/filtered-by-state?page=${page}`,
+            {
+              state: selectedState ? selectedState : "Australia Wide",
+            }
+          )
           .then((res) => {
             let { services } = res.data;
+            ({
+              hasNextPage,
+              hasPrevPage,
+              nextPage,
+              prevPage,
+              lastPage,
+              currentPage,
+            } = res.data);
             let servicesMarkup = "";
 
             if (!isEmpty(selectedCategory)) {
               services = services.filter((el) => {
-                return el.category === selectedCategory;
+                return (
+                  el.category === selectedCategory ||
+                  el.state === "Australia Wide"
+                );
               });
               console.log(services);
               console.log(selectedCategory);
@@ -770,7 +785,10 @@
 
             if (!isEmpty(selectedSubCategory)) {
               services = services.filter((el) => {
-                return el.subCategory === selectedSubCategory;
+                return (
+                  el.subCategory === selectedSubCategory ||
+                  el.state === "Australia Wide"
+                );
               });
             }
 
@@ -787,36 +805,95 @@
               }
 
               servicesMarkup += `
-                <div class="col-lg-4 col-md-6">
-                  <div class="single-product t-single-product mb-30">
-                      <div class="product-img">
-                        <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
-                      </div>
-                      <div class="t-product-overlay" style="position:relative;">
-                        <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                        <span><a href="all-products.html?category=${
-                          serviceCategory + "&state=" + selectedState
-                        }">${serviceCategory}</a> / <a href="all-products.html?sub-category=${
+                    <div class="col-lg-4 col-md-6">
+                      <div class="single-product t-single-product mb-30">
+                          <div class="product-img">
+                            <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
+                          </div>
+                          <div class="t-product-overlay" style="position:relative;">
+                            <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
+                            <span><a href="all-products.html?category=${
+                              serviceCategory + "&state=" + selectedState
+                            }">${serviceCategory}</a> / <a href="all-products.html?sub-category=${
                 serviceSubCategory + "&state=" + selectedState
               }">${serviceSubCategory}</a></span>
-                        <!--<p>14 Sales</p>-->
-                        <div class="t-product-meta">
-                          <div class="t-product-rating">
-                            <!--<i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>-->
-                            <a href="product-details.html?servie=${serviceId}">More Details</a>
+                            <!--<p>14 Sales</p>-->
+                            <div class="t-product-meta">
+                              <div class="t-product-rating">
+                                <!--<i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>-->
+                                <a href="product-details.html?service=${serviceId}">More Details</a>
+                              </div>
+                              <h6>$${servicePrice}</h6>
+                            </div>
                           </div>
-                          <h6>$${servicePrice}</h6>
-                        </div>
                       </div>
-                  </div>
-                </div>`;
+                    </div>`;
             });
 
             $("#dvProduct").html(servicesMarkup);
+
+            // Pagination
+
+            // let paginationMarkup = `
+            // <li class="page-item">
+            //   <a href="#"><i class="fas fa-chevron-left"></i></a>
+            // </li>
+            // <li class="page-item"><a href="#">01</a></li>
+            // <li class="page-item"><a href="#">02</a></li>
+
+            // <li class="page-item"><a href="#">...</a></li>
+            // <li class="page-item"><a href="#">10</a></li>
+            // ;
+            let basePath = `all-products.html?category=${selectedCategory}&sub-category=${selectedSubCategory}&state=${selectedState}`;
+
+            let paginationMarkup = `
+
+            `;
+
+            if (hasPrevPage) {
+              paginationMarkup += `
+              <li class="page-item">
+               <a href="${basePath}&page=${prevPage}"><i class="fas fa-chevron-left"></i></a>
+             </li>`;
+            }
+
+            if (hasPrevPage && prevPage) {
+              paginationMarkup += `
+              <li class="page-item"><a href="${basePath}&page=${prevPage}">${prevPage}</a></li>
+              `;
+            }
+
+            if (currentPage) {
+              paginationMarkup += `
+              <li class="page-item active"><a href="${basePath}&page=${currentPage}">${currentPage}</a></li>
+              `;
+            }
+
+            if (hasNextPage && nextPage) {
+              paginationMarkup += `
+              <li class="page-item"><a href="${basePath}&page=${nextPage}">${nextPage}</a></li>
+              `;
+            }
+
+            if (hasNextPage && lastPage && lastPage !== nextPage) {
+              paginationMarkup += `
+              <li class="page-item">...</li>
+              <li class="page-item"><a href="${basePath}&page=${lastPage}">${lastPage}</a></li>
+              `;
+            }
+
+            if (hasNextPage && nextPage) {
+              paginationMarkup += `
+              <li class="page-item">
+                <a href="${basePath}&page=${nextPage}"><i class="fas fa-chevron-right"></i></a>
+              </li>`;
+            }
+
+            $("#ulPagination").html(paginationMarkup);
           })
           .catch((err) => {
             console.log(err);
@@ -828,19 +905,13 @@
             } else {
               errorMessage = "Something went wrong";
             }
-            $("#dvProduct").html(
-              `<h4 class='text-danger col-12 text-center'>${errorMessage}</h4>`
-            );
+            $("#dvProduct").html(generateErrorMarkup(errorMessage));
           });
       };
 
       $(document).ready(function () {
         $("#stateFilter").change(function () {
           const selectedState = $(this).val();
-
-          // if(!isEmpty(selectedSubCategory) {
-
-          // }
 
           window.location.href =
             "//" +
