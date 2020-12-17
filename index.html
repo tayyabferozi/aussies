@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/default.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
   </head>
   <body>
     <!-- preloader -->
@@ -54,7 +55,7 @@
                     <div class="col-md-6">
                         <div class="header-social text-right">
                             <ul>
-                                <li class="become-seller"><a href="become-a-seller.html">Become a Seller</a></li>
+                                <li class="become-seller"><a href="become-a-partner.html">Become a Partner</a></li>
                                 <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
                                 <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
@@ -127,7 +128,7 @@
                   >
                     <div class="col-md-4 col-sm-12 text-center text-md-right">
                       <label class="m-0 mr-4" for="stateFilter"
-                        ><h5 class="m-0">Select Your Preferred State:</h5></label
+                        ><h5 class="m-0" style="color: white;">Select Your Preferred State:</h5></label
                       >
                     </div>
                     <div class="col-md-4 col-sm-12 text-center text-md-left">
@@ -835,6 +836,19 @@
 
         fetchServices(selectedState);
       });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#000"
+                },
+                "button": {
+                    "background": "#f1d600"
+                }
+            }
+        });
     </script>
   </body>
 </html>

@@ -3631,3 +3631,17 @@ h5.vendor-wrap-title {
 .menu-area.sticky-menu{
   background-image: none;
 }
+
+
+
+.products-breadcrumb-area {
+  min-height: auto;
+  padding: 60px 0px;
+}
+.breadcrumb-area{
+  min-height: auto;
+  padding: 60px 0px;
+}
+.breadcrumb-wrap {
+  padding-top: 0px;
+}
