@@ -3622,3 +3622,12 @@ h5.vendor-wrap-title {
     opacity: 0;
   }
 }
+
+
+.menu-area{
+  background-image: url(../img/bg/breadcrumb_bg02.jpg)
+}
+
+.menu-area.sticky-menu{
+  background-image: none;
+}
