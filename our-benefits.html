@@ -182,7 +182,7 @@
                     <p>Aussie Marketplace has versatile gestures of letting your business grow. We give our clients the liberty to set up different attractive deals, offers, and promotions to generate organic leads and audiences.</p>
                 </div>
                 <div class="col-lg-6 my-auto">
-                    <img src="img/images/instant-message.png" class="img img-fluid" />
+                    <img src="img/images/multiple-deals-offers-promotions.jpg" class="img img-fluid" />
                 </div>
             </div>
             <div class="row pt-5 pb-5">
@@ -191,7 +191,7 @@
                     <p>If you’re interested in gathering your customers to your location then Aussie Marketplace can help you with it too. We integrate renowned navigators such and Google Map to guide your clients and give them detailed directions to your location.</p>
                 </div>
                 <div class="col-lg-6 my-auto">
-                    <img src="img/images/instant-message.png" class="img img-fluid" />
+                    <img src="img/images/google-map-direction.jpg" class="img img-fluid" />
                 </div>
             </div>
             <div class="row pt-5 pb-5">
@@ -200,7 +200,7 @@
                     <p>Aussie Marketplace doesn’t work on the basis of verbal updates. Once we’re associated with any client, we start keeping up with the record. Through this we’re able to offer a detailed analytics report about the engagement of visitors on our client’s business page.</p>
                 </div>
                 <div class="col-lg-6 my-auto">
-                    <img src="img/images/instant-message.png" class="img img-fluid" />
+                    <img src="img/images/analytics.png" class="img img-fluid" />
                 </div>
             </div>
             <div class="row pt-5 pb-5">
@@ -218,7 +218,7 @@
                     <p>Here at Aussie Marketplace, we create a special service page where clients can get their estimated quote allowing them to book their choice of service or deal. We attach a special booking buttons on our client’s service page giving feasibility to their clients.</p>
                 </div>
                 <div class="col-lg-6 my-auto">
-                    <img src="img/images/instant-message.png" class="img img-fluid" />
+                    <img src="img/images/online-booking.jpg" class="img img-fluid" />
                 </div>
             </div>
         </div>
@@ -474,197 +474,5 @@
     <script src="js/main.js"></script>
     <script type="module" src="./js/utils/utils.js"></script>
     <script type="module" src="./js/jquery.marketplace.js"></script>
-    <script type="module">
-      import { UserCtrl } from "./js/jquery.marketplace.js";
-      import {
-        Constants,
-        getParam,
-        isEmpty,
-        generateErrorMarkup,
-      } from "./js/utils/utils.js";
-
-      let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
-
-      const selectedCategory = getParam("category");
-      const selectedSubCategory = getParam("sub-catgory");
-      const selectedState = getParam("state");
-      let page = getParam("page");
-
-      const fetchServices = (selectedState) => {
-        axios
-          .post(
-            `${Constants.defaultApiURI}services/filtered-by-state?page=${page}`,
-            {
-              state: selectedState ? selectedState : "Australia Wide",
-            }
-          )
-          .then((res) => {
-            let { services } = res.data;
-            ({
-              hasNextPage,
-              hasPrevPage,
-              nextPage,
-              prevPage,
-              lastPage,
-              currentPage,
-            } = res.data);
-            let servicesMarkup = "";
-
-            if (!isEmpty(selectedCategory)) {
-              services = services.filter((el) => {
-                return (
-                  el.category === selectedCategory ||
-                  el.state === "Australia Wide"
-                );
-              });
-              console.log(services);
-              console.log(selectedCategory);
-            }
-
-            if (!isEmpty(selectedSubCategory)) {
-              services = services.filter((el) => {
-                return (
-                  el.subCategory === selectedSubCategory ||
-                  el.state === "Australia Wide"
-                );
-              });
-            }
-
-            services.forEach((service) => {
-              let heroThumbnail;
-              const serviceName = service.name;
-              const servicePrice = service.price;
-              const serviceCategory = service.category;
-              const serviceSubCategory = service.subCategory;
-              const serviceId = service._id;
-              if (!isEmpty(service.thumbnails)) {
-                heroThumbnail =
-                  Constants.defaultImageURI + service.thumbnails[0].filename;
-              }
-
-              servicesMarkup += `
-                    <div class="col-lg-4 col-md-6">
-                      <div class="single-product t-single-product mb-30">
-                          <div class="product-img">
-                            <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
-                          </div>
-                          <div class="t-product-overlay" style="position:relative;">
-                            <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                            <span><a href="all-products.html?category=${
-                              serviceCategory + "&state=" + selectedState
-                            }">${serviceCategory}</a> / <a href="all-products.html?sub-category=${
-                serviceSubCategory + "&state=" + selectedState
-              }">${serviceSubCategory}</a></span>
-                            <!--<p>14 Sales</p>-->
-                            <div class="t-product-meta">
-                              <div class="t-product-rating">
-                                <!--<i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>-->
-                                <a href="product-details.html?service=${serviceId}">More Details</a>
-                              </div>
-                              <h6>$${servicePrice}</h6>
-                            </div>
-                          </div>
-                      </div>
-                    </div>`;
-            });
-
-            $("#dvProduct").html(servicesMarkup);
-
-            // Pagination
-
-            // let paginationMarkup = `
-            // <li class="page-item">
-            //   <a href="#"><i class="fas fa-chevron-left"></i></a>
-            // </li>
-            // <li class="page-item"><a href="#">01</a></li>
-            // <li class="page-item"><a href="#">02</a></li>
-
-            // <li class="page-item"><a href="#">...</a></li>
-            // <li class="page-item"><a href="#">10</a></li>
-            // ;
-            let basePath = `all-products.html?category=${selectedCategory}&sub-category=${selectedSubCategory}&state=${selectedState}`;
-
-            let paginationMarkup = `
-
-            `;
-
-            if (hasPrevPage) {
-              paginationMarkup += `
-              <li class="page-item">
-               <a href="${basePath}&page=${prevPage}"><i class="fas fa-chevron-left"></i></a>
-             </li>`;
-            }
-
-            if (hasPrevPage && prevPage) {
-              paginationMarkup += `
-              <li class="page-item"><a href="${basePath}&page=${prevPage}">${prevPage}</a></li>
-              `;
-            }
-
-            if (currentPage) {
-              paginationMarkup += `
-              <li class="page-item active"><a href="${basePath}&page=${currentPage}">${currentPage}</a></li>
-              `;
-            }
-
-            if (hasNextPage && nextPage) {
-              paginationMarkup += `
-              <li class="page-item"><a href="${basePath}&page=${nextPage}">${nextPage}</a></li>
-              `;
-            }
-
-            if (hasNextPage && lastPage && lastPage !== nextPage) {
-              paginationMarkup += `
-              <li class="page-item">...</li>
-              <li class="page-item"><a href="${basePath}&page=${lastPage}">${lastPage}</a></li>
-              `;
-            }
-
-            if (hasNextPage && nextPage) {
-              paginationMarkup += `
-              <li class="page-item">
-                <a href="${basePath}&page=${nextPage}"><i class="fas fa-chevron-right"></i></a>
-              </li>`;
-            }
-
-            $("#ulPagination").html(paginationMarkup);
-          })
-          .catch((err) => {
-            console.log(err);
-            let errorMessage;
-            if (err.request) {
-              errorMessage = "Network Error!";
-            } else if (err.response) {
-              errorMessage = err.response.data.errors[0];
-            } else {
-              errorMessage = "Something went wrong";
-            }
-            $("#dvProduct").html(generateErrorMarkup(errorMessage));
-          });
-      };
-
-      $(document).ready(function () {
-        $("#stateFilter").change(function () {
-          const selectedState = $(this).val();
-
-          window.location.href =
-            "//" +
-            location.host +
-            location.pathname +
-            "?state=" +
-            selectedState;
-        });
-
-        if (!isEmpty(selectedState)) {
-          $(`#stateFilter > [value='${selectedState}']`).attr("selected", true);
-        }
-
-        fetchServices(selectedState);
-      });
-    </script>
   </body>
 </html>
