@@ -312,7 +312,6 @@ export class UserCtrl {
           const serviceName = service.name;
           const servicePrice = service.price;
           const serviceCategory = service.category;
-          const serviceSubCategory = service.subCategory;
           const serviceId = service._id;
           if (!isEmpty(service.thumbnails)) {
             heroThumbnail =
@@ -327,7 +326,7 @@ export class UserCtrl {
                 </div>
                 <div class="t-product-overlay" style="position:relative;">
                   <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                  <span>${serviceCategory}/${serviceSubCategory}</span>
+                  <span>${serviceCategory}</span>
                   <!--<p>14 Sales</p>-->
                   <div class="t-product-meta">
                     <div class="t-product-rating">

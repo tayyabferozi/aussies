@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
 
     <style>
-      .slider-search-form .nice-select{
+      .slider-search-form .nice-select {
         border-radius: 50px;
       }
     </style>
@@ -68,7 +68,7 @@
                       <a href="#">Home</a>
                     </li>
                     <li>
-                        <a href="our-benefits.html">Our Benefits</a>
+                      <a href="our-benefits.html">Our Benefits</a>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
                   </ul>
@@ -144,15 +144,15 @@
             </div>
             <div class="col-md-4 col-sm-12 text-center text-md-left">
               <div class="slider-search-form">
-                  <select name="name" class="selected" id="stateFilter">
-                    <option value="Australia Wide">Australia Wide</option>
-                    <option value="New South Wales">New South Wales</option>
-                    <option value="Queensland">Queensland</option>
-                    <option value="Victoria">Victoria</option>
-                    <option value="Tasmania">Tasmania</option>
-                    <option value="Western Australia">Western Australia</option>
-                    <option value="South Australia">South Australia</option>
-                  </select>
+                <select name="name" class="selected" id="stateFilter">
+                  <option value="Australia Wide">Australia Wide</option>
+                  <option value="New South Wales">New South Wales</option>
+                  <option value="Queensland">Queensland</option>
+                  <option value="Victoria">Victoria</option>
+                  <option value="Tasmania">Tasmania</option>
+                  <option value="Western Australia">Western Australia</option>
+                  <option value="South Australia">South Australia</option>
+                </select>
               </div>
             </div>
           </div>
@@ -660,7 +660,6 @@
       let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
 
       const selectedCategory = getParam("category");
-      const selectedSubCategory = getParam("sub-catgory");
       const selectedState = getParam("state");
       let page = getParam("page");
 
@@ -695,21 +694,11 @@
               console.log(selectedCategory);
             }
 
-            if (!isEmpty(selectedSubCategory)) {
-              services = services.filter((el) => {
-                return (
-                  el.subCategory === selectedSubCategory ||
-                  el.state === "Australia Wide"
-                );
-              });
-            }
-
             services.forEach((service) => {
               let heroThumbnail;
               const serviceName = service.name;
               const servicePrice = service.price;
               const serviceCategory = service.category;
-              const serviceSubCategory = service.subCategory;
               const serviceId = service._id;
               if (!isEmpty(service.thumbnails)) {
                 heroThumbnail =
@@ -726,9 +715,7 @@
                             <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
                             <span><a href="all-products.html?category=${
                               serviceCategory + "&state=" + selectedState
-                            }">${serviceCategory}</a> / <a href="all-products.html?sub-category=${
-                serviceSubCategory + "&state=" + selectedState
-              }">${serviceSubCategory}</a></span>
+                            }">${serviceCategory}</a> </span>
                             <!--<p>14 Sales</p>-->
                             <div class="t-product-meta">
                               <div class="t-product-rating">
@@ -760,7 +747,7 @@
             // <li class="page-item"><a href="#">...</a></li>
             // <li class="page-item"><a href="#">10</a></li>
             // ;
-            let basePath = `all-products.html?category=${selectedCategory}&sub-category=${selectedSubCategory}&state=${selectedState}`;
+            let basePath = `all-products.html?category=${selectedCategory}&state=${selectedState}`;
 
             let paginationMarkup = `
 
