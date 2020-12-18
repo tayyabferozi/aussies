@@ -1,0 +1,179 @@
+<script type="module">
+      import { UserCtrl } from "./js/jquery.marketplace.js";
+      import {
+        Constants,
+        getParam,
+        isEmpty,
+        generateErrorMarkup,
+      } from "./js/utils/utils.js";
+
+      let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
+
+      const selectedCategory = getParam("category");
+      const selectedState = getParam("state");
+      let page = getParam("page");
+
+      const fetchServices = (selectedState) => {
+        axios
+          .post(
+            `${Constants.defaultApiURI}services/filtered-by-state?page=${page}`,
+            {
+              state: selectedState ? selectedState : "Australia Wide",
+            }
+          )
+          .then((res) => {
+            let { services } = res.data;
+            ({
+              hasNextPage,
+              hasPrevPage,
+              nextPage,
+              prevPage,
+              lastPage,
+              currentPage,
+            } = res.data);
+            let servicesMarkup = "";
+
+            if (!isEmpty(selectedCategory)) {
+              services = services.filter((el) => {
+                return (
+                  el.category === selectedCategory ||
+                  el.state === "Australia Wide"
+                );
+              });
+              console.log(services);
+              console.log(selectedCategory);
+            }
+
+            services.forEach((service) => {
+              let heroThumbnail;
+              const serviceName = service.name;
+              const servicePrice = service.price;
+              const serviceCategory = service.category;
+              const serviceId = service._id;
+              if (!isEmpty(service.thumbnails)) {
+                heroThumbnail =
+                  Constants.defaultImageURI + service.thumbnails[0].filename;
+              }
+
+              servicesMarkup += `
+                    <div class="col-lg-4 col-md-6">
+                      <div class="single-product t-single-product mb-30">
+                          <div class="product-img">
+                            <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
+                          </div>
+                          <div class="t-product-overlay" style="position:relative;">
+                            <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
+                            <span><a href="all-products.html?category=${
+                              serviceCategory + "&state=" + selectedState
+                            }">${serviceCategory}</a></span>
+                            <!--<p>14 Sales</p>-->
+                            <div class="t-product-meta">
+                              <div class="t-product-rating">
+                                <!--<i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>-->
+                                <a href="product-details.html?service=${serviceId}">More Details</a>
+                              </div>
+                              <h6>$${servicePrice}</h6>
+                            </div>
+                          </div>
+                      </div>
+                    </div>`;
+            });
+
+            $("#dvProduct").html(servicesMarkup);
+
+            // Pagination
+
+            // let paginationMarkup = `
+            // <li class="page-item">
+            //   <a href="#"><i class="fas fa-chevron-left"></i></a>
+            // </li>
+            // <li class="page-item"><a href="#">01</a></li>
+            // <li class="page-item"><a href="#">02</a></li>
+
+            // <li class="page-item"><a href="#">...</a></li>
+            // <li class="page-item"><a href="#">10</a></li>
+            // ;
+            let basePath = `all-products.html?category=${selectedCategory}&state=${selectedState}`;
+
+            let paginationMarkup = `
+
+            `;
+
+            if (hasPrevPage) {
+              paginationMarkup += `
+              <li class="page-item">
+               <a href="${basePath}&page=${prevPage}"><i class="fas fa-chevron-left"></i></a>
+             </li>`;
+            }
+
+            if (hasPrevPage && prevPage) {
+              paginationMarkup += `
+              <li class="page-item"><a href="${basePath}&page=${prevPage}">${prevPage}</a></li>
+              `;
+            }
+
+            if (currentPage) {
+              paginationMarkup += `
+              <li class="page-item active"><a href="${basePath}&page=${currentPage}">${currentPage}</a></li>
+              `;
+            }
+
+            if (hasNextPage && nextPage) {
+              paginationMarkup += `
+              <li class="page-item"><a href="${basePath}&page=${nextPage}">${nextPage}</a></li>
+              `;
+            }
+
+            if (hasNextPage && lastPage && lastPage !== nextPage) {
+              paginationMarkup += `
+              <li class="page-item">...</li>
+              <li class="page-item"><a href="${basePath}&page=${lastPage}">${lastPage}</a></li>
+              `;
+            }
+
+            if (hasNextPage && nextPage) {
+              paginationMarkup += `
+              <li class="page-item">
+                <a href="${basePath}&page=${nextPage}"><i class="fas fa-chevron-right"></i></a>
+              </li>`;
+            }
+
+            $("#ulPagination").html(paginationMarkup);
+          })
+          .catch((err) => {
+            console.log(err);
+            let errorMessage;
+            if (err.request) {
+              errorMessage = "Network Error!";
+            } else if (err.response) {
+              errorMessage = err.response.data.errors[0];
+            } else {
+              errorMessage = "Something went wrong";
+            }
+            $("#dvProduct").html(generateErrorMarkup(errorMessage));
+          });
+      };
+
+      $(document).ready(function () {
+        $("#stateFilter").change(function () {
+          const selectedState = $(this).val();
+
+          window.location.href =
+            "//" +
+            location.host +
+            location.pathname +
+            "?state=" +
+            selectedState;
+        });
+
+        if (!isEmpty(selectedState)) {
+          $(`#stateFilter > [value='${selectedState}']`).attr("selected", true);
+        }
+
+        fetchServices(selectedState);
+      });
+    </script>
