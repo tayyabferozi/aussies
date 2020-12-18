@@ -777,13 +777,8 @@
 
             if (!isEmpty(selectedCategory)) {
               services = services.filter((el) => {
-                return (
-                  el.category === selectedCategory ||
-                  el.state === "Australia Wide"
-                );
+                return el.category === selectedCategory;
               });
-              console.log(services);
-              console.log(selectedCategory);
             }
 
             services.forEach((service) => {
