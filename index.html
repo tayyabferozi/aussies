@@ -876,12 +876,16 @@
         getParam,
         isEmpty,
         generateErrorMarkup,
+        createCookie,
+        readCookie,
       } from "./js/utils/utils.js";
 
       let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
 
       const selectedCategory = getParam("category");
-      const selectedState = getParam("state");
+      // First priority to query param then fallback to cookie
+      const selectedState =
+        getParam("state") || readCookie("aussies-state-selection");
       let page = getParam("page");
 
       const fetchServices = (selectedState) => {
@@ -906,13 +910,8 @@
 
             if (!isEmpty(selectedCategory)) {
               services = services.filter((el) => {
-                return (
-                  el.category === selectedCategory ||
-                  el.state === "Australia Wide"
-                );
+                return el.category === selectedCategory;
               });
-              console.log(services);
-              console.log(selectedCategory);
             }
 
             services.forEach((service) => {
@@ -968,7 +967,7 @@
             // <li class="page-item"><a href="#">...</a></li>
             // <li class="page-item"><a href="#">10</a></li>
             // ;
-            let basePath = `index.html?category=${selectedCategory}&sub-category=${selectedSubCategory}&state=${selectedState}`;
+            let basePath = `index.html?category=${selectedCategory}&state=${selectedState}`;
 
             let paginationMarkup = `
 
@@ -1042,7 +1041,14 @@
         });
 
         if (!isEmpty(selectedState)) {
-          $(`#stateFilter > [value='${selectedState}']`).attr("selected", true);
+          $(`#stateFilter > [value='${selectedState}']`).attr(
+            "selected",
+            "selected"
+          );
+          $(".nice-select .current").html(selectedState);
+          // set cookies for selected state
+
+          createCookie("aussies-state-selection", selectedState, 365);
         }
 
         fetchServices(selectedState);
