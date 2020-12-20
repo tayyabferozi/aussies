@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Aussies Marketplace - Contact</title>
+    <title>Aussies Marketplace - Promote my business</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -92,7 +92,7 @@
               <div class="logo">
                 <a href="index.html">
                   <img
-                    src="img/logo/s_logo_transparent.png"
+                    src="img/logo/s_logo.png"
                     class="transparent-logo"
                     alt="Logo"
                   />
@@ -104,16 +104,9 @@
               <div class="main-menu s-main-menu d-none d-lg-inline-block">
                 <nav id="mobile-menu">
                   <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="our-benefits.html">Our Benefits</a></li>
-                    <li class="active"><a href="contact.html">Contact</a></li>
+                    <li id="add-business-btn"></li>
                   </ul>
                 </nav>
-              </div>
-              <div class="header-btn d-none d-xl-inline-block">
-                <a href="promote-my-business.html" class="btn"
-                  ><i class="fas fa-user"></i>Promote my business</a
-                >
               </div>
             </div>
             <div class="col-12">
@@ -136,96 +129,19 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-wrap text-center">
-                <h2>Contact</h2>
+                <h2>Business List</h2>
               </div>
             </div>
           </div>
         </div>
       </section>
       <!-- breadcrumb-area-end -->
-      <!-- contact-area -->
-      <section class="contact-area pt-120 pb-120">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-5 col-lg-6">
-              <div class="contact-wrap">
-                <div
-                  class="section-title s-section-title white-title contact-title mb-25"
-                >
-                  <span>information</span>
-                  <h2>Office Information</h2>
-                </div>
-                <div class="contact-info-list">
-                  <ul>
-                    <li>
-                      <h5>Office Locations</h5>
-                      <span
-                        >W8 Steet Capital 7TH Lan Roas New York Brooklyn, New
-                        York</span
-                      >
-                    </li>
-                    <li>
-                      <h5>Contact Number</h5>
-                      <span>(+02) 124 326 4587</span>
-                      <span>(+02) 124 326 4588</span>
-                    </li>
-                    <li>
-                      <h5>Mail Support</h5>
-                      <span>infocompany@mail.com</span>
-                      <span>info@exemple.com</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-7 col-lg-6">
-              <div class="section-title s-section-title mb-40">
-                <span>contact form</span>
-                <h2>Leave Request</h2>
-              </div>
-              <div class="contact-form">
-                <form id="contact-form" action="#">
-                  <div id="feedback-container"></div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <input name="name" type="text" placeholder="Your Name*" />
-                    </div>
-                    <div class="col-md-6">
-                      <input
-                        name="email"
-                        type="email"
-                        placeholder="Your Email*"
-                      />
-                    </div>
-                    <div class="col-md-6">
-                      <input name="phone" type="tel" placeholder="Phone*" />
-                    </div>
-                    <div class="col-md-6">
-                      <input
-                        name="subject"
-                        type="text"
-                        placeholder="Subject*"
-                      />
-                    </div>
-                  </div>
-                  <textarea
-                    name="message"
-                    id="message"
-                    placeholder="Your Message"
-                  ></textarea>
-                  <button id="contact-submit-btn" class="btn">
-                    Submit Request
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- business-list-start -->
+      <section class="m-5 business-list-area pt-120 pb-120">
+        <div class="loader"></div>
+        <div id="feedback-container"></div>
       </section>
-      <!-- contact-area-end -->
-      <!-- contact-map -->
-      <div id="contact-map"></div>
-      <!-- contact-map-end -->
+      <!-- business-list-end -->
     </main>
     <!-- main-area-end -->
 
@@ -485,12 +401,13 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_pcAdFNbTDCAvMwAD19oRTuEmb9M50c"></script>
     <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
       integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
       crossorigin="anonymous"
     ></script>
+    <script src="js/main.js"></script>
     <script type="module">
       import {
         Constants,
@@ -502,158 +419,100 @@
         readCookie,
       } from "./js/utils/utils.js";
 
-      function basicmap() {
-        // Basic options for a simple Google Map
-        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-        var mapOptions = {
-          // How zoomed in you want the map to start at (always required)
-          zoom: 11,
-          scrollwheel: false,
-          // The latitude and longitude to center the map (always required)
-          center: new google.maps.LatLng(40.67, -73.94), // New York
-          // This is where you would paste any style found on Snazzy Maps.
-          styles: [
-            {
-              featureType: "water",
-              elementType: "geometry",
-              stylers: [{ color: "#e9e9e9" }, { lightness: 17 }],
-            },
-            {
-              featureType: "landscape",
-              elementType: "geometry",
-              stylers: [{ color: "#f5f5f5" }, { lightness: 20 }],
-            },
-            {
-              featureType: "road.highway",
-              elementType: "geometry.fill",
-              stylers: [{ color: "#ffffff" }, { lightness: 17 }],
-            },
-            {
-              featureType: "road.highway",
-              elementType: "geometry.stroke",
-              stylers: [
-                { color: "#ffffff" },
-                { lightness: 29 },
-                { weight: 0.2 },
-              ],
-            },
-            {
-              featureType: "road.arterial",
-              elementType: "geometry",
-              stylers: [{ color: "#ffffff" }, { lightness: 18 }],
-            },
-            {
-              featureType: "road.local",
-              elementType: "geometry",
-              stylers: [{ color: "#ffffff" }, { lightness: 16 }],
-            },
-            {
-              featureType: "poi",
-              elementType: "geometry",
-              stylers: [{ color: "#f5f5f5" }, { lightness: 21 }],
-            },
-            {
-              featureType: "poi.park",
-              elementType: "geometry",
-              stylers: [{ color: "#dedede" }, { lightness: 21 }],
-            },
-            {
-              elementType: "labels.text.stroke",
-              stylers: [
-                { visibility: "on" },
-                { color: "#ffffff" },
-                { lightness: 16 },
-              ],
-            },
-            {
-              elementType: "labels.text.fill",
-              stylers: [
-                { saturation: 36 },
-                { color: "#333333" },
-                { lightness: 40 },
-              ],
-            },
-            { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-            {
-              featureType: "transit",
-              elementType: "geometry",
-              stylers: [{ color: "#f2f2f2" }, { lightness: 19 }],
-            },
-            {
-              featureType: "administrative",
-              elementType: "geometry.fill",
-              stylers: [{ color: "#fefefe" }, { lightness: 20 }],
-            },
-            {
-              featureType: "administrative",
-              elementType: "geometry.stroke",
-              stylers: [
-                { color: "#fefefe" },
-                { lightness: 17 },
-                { weight: 1.2 },
-              ],
-            },
-          ],
-        };
-        // Get the HTML DOM element that will contain your map
-        // We are using a div with id="map" seen below in the <body>
-        var mapElement = document.getElementById("contact-map");
-
-        // Create the Google Map using our element and options defined above
-        var map = new google.maps.Map(mapElement, mapOptions);
-
-        // Let's also add a marker while we're at it
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(40.67, -73.94),
-          map: map,
-          icon: "img/icon/map_icon.png",
-          title: "Makplus",
+      function initializeTable() {
+        var table = $("#example").DataTable({
+          createdRow: function (row, data, index) {
+            $(row).addClass("selected");
+          },
         });
       }
-      if ($("#contact-map").length != 0) {
-        google.maps.event.addDomListener(window, "load", basicmap);
+
+      function generateTableMarkup(data) {
+        let businessesMarkup = `
+        <div class="text-center">
+          <strong class="text-primary">Your total SMS credits: </strong>
+          <span id="sms-credits-count"></span>
+        </div>
+        <div class="p-5">
+          <div class="table-responsive">
+          <table id="example" class="display" style="min-width: 845px">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Person name</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Email</th>
+                <th>Facebook</th>
+                <th>Instagram</th>
+                <th>LinkedIn</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+        `;
+
+        data.forEach((el) => {
+          businessesMarkup += `
+          <tr>
+            <td>${el.name}</td>  
+            <td>${el.personName}</td>  
+            <td>${el.phone}</td>  
+            <td>${el.website}</td>  
+            <td>${el.email}</td>  
+            <td>${el.facebook}</td>  
+            <td>${el.instagram}</td>  
+            <td>${el.linkedIn}</td>  
+          </tr>
+          `;
+        });
+
+        businessesMarkup += `
+        
+            </tbody>
+          </table>
+        </div>
+      </div>
+      `;
+
+        $(".business-list-area").html(businessesMarkup);
+        initializeTable();
       }
 
-      $("#contact-form").submit(function (e) {
-        e.preventDefault();
+      const resellerId = getParam("reseller-id") || 0;
 
-        const name = $("[name='name']").val();
-        const email = $("[name='email']").val();
-        const phone = $("[name='phone']").val();
-        const subject = $("[name='subject']").val();
-        const message = $("[name='message']").val();
-        $("#feedback-container").empty();
-        $("#contact-submit-btn").attr("disabled", true);
-        $();
-        axios
-          .post(`${Constants.defaultApiURI}mails/contact`, {
-            name,
-            email,
-            phone,
-            subject,
-            message,
-          })
-          .then((res) => {
-            const { msg } = res.data;
+      axios
+        .get(`${Constants.defaultApiURI}resellers/${resellerId}`)
+        .then((res) => {
+          const {
+            reseller: { businesses, smsCredits },
+          } = res.data;
 
-            $("#feedback-container").html(generateSuccessMarkup(msg));
-          })
-          .catch((err) => {
-            console.log(err);
-            let errorMessage;
-            if (err.response) {
-              errorMessage = err.response.data.errors[0];
-            } else if (err.request) {
-              errorMessage = "Network Error!";
-            } else {
-              errorMessage = "Something went wrong";
-            }
-            $("#feedback-container").html(generateErrorMarkup(errorMessage));
-          })
-          .finally(() => {
-            $("#contact-submit-btn").attr("disabled", false);
+          generateTableMarkup(businesses);
+
+          let totalSmsCredits = 0;
+
+          smsCredits.forEach((el) => {
+            totalSmsCredits += el.credits;
           });
-      });
+
+          $("#sms-credits-count").html(totalSmsCredits);
+          $("#add-business-btn").html(
+            `<a href="add-business.html?reseller-id=${resellerId}">Add a business</a>`
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+          let errorMessage;
+          if (err.response) {
+            errorMessage = err.response.data.errors[0];
+          } else if (err.request) {
+            errorMessage = "Network Error!";
+          } else {
+            errorMessage = "Something went wrong";
+          }
+          $(".loader").replaceWith(generateErrorMarkup(errorMessage));
+        });
     </script>
   </body>
 </html>

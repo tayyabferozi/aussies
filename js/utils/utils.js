@@ -22,7 +22,21 @@ export const isEmpty = (value) =>
   (typeof value === "object" && Object.keys(value).length === 0);
 
 export const generateErrorMarkup = (message) => {
-  return `<h4 class='text-danger col-12 text-center'>${message}</h4>`;
+  return `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  ${message}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>`;
+};
+
+export const generateSuccessMarkup = (message) => {
+  return `<div class="alert alert-success alert-dismissible fade show" role="alert">
+  ${message}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>`;
 };
 
 export const createCookie = (name, value, days) => {

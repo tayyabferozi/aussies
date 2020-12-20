@@ -616,7 +616,9 @@
           <div class="row">
             <div class="col-12">
               <div class="logo text-center mb-30">
-                <a href="#"><img src="img/logo/s_logo.png" alt="Logo" /></a>
+                <a href="#"
+                  ><img src="img/logo/s_logo_transparent.png" alt="Logo"
+                /></a>
               </div>
             </div>
           </div>
@@ -955,18 +957,6 @@
 
             $("#dvProduct").html(servicesMarkup);
 
-            // Pagination
-
-            // let paginationMarkup = `
-            // <li class="page-item">
-            //   <a href="#"><i class="fas fa-chevron-left"></i></a>
-            // </li>
-            // <li class="page-item"><a href="#">01</a></li>
-            // <li class="page-item"><a href="#">02</a></li>
-
-            // <li class="page-item"><a href="#">...</a></li>
-            // <li class="page-item"><a href="#">10</a></li>
-            // ;
             let basePath = `index.html?category=${selectedCategory}&state=${selectedState}`;
 
             let paginationMarkup = `
@@ -1017,10 +1007,10 @@
           .catch((err) => {
             console.log(err);
             let errorMessage;
-            if (err.request) {
-              errorMessage = "Network Error!";
-            } else if (err.response) {
+            if (err.response) {
               errorMessage = err.response.data.errors[0];
+            } else if (err.request) {
+              errorMessage = "Network Error!";
             } else {
               errorMessage = "Something went wrong";
             }
