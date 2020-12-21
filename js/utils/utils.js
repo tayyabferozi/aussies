@@ -1,7 +1,3 @@
-// export const defaultApiURI = "https://serene-fortress-81927.herokuapp.com/api/";
-// export const defaultImageURI =
-//   "https://serene-fortress-81927.herokuapp.com/images/";
-
 export const Constants = {
   // defaultApiURI: "https://serene-fortress-81927.herokuapp.com/api/",
   // defaultImageURI: "https://serene-fortress-81927.herokuapp.com/images/",
