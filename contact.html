@@ -624,9 +624,8 @@
         const message = $("[name='message']").val();
         $("#feedback-container").empty();
         $("#contact-submit-btn").attr("disabled", true);
-        $();
         axios
-          .post(`${Constants.defaultApiURI}mails/contact`, {
+          .post(`${Constants.defaultApiURI}support/contact`, {
             name,
             email,
             phone,
