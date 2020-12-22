@@ -191,7 +191,7 @@
                   <div class="row" id="sub-filter"></div>
                 </div>
                 <div class="container">
-                  <div class="row mt-5 justify-content-center">
+                  <div class="row mt-5 justify-content-center" id="dvCategory">
                     <a
                       href="#"
                       class="col text-center"
@@ -882,6 +882,8 @@
         readCookie,
       } from "./js/utils/utils.js";
 
+      UserCtrl.BindCategory();
+
       let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
 
       const selectedCategory = getParam("category");
@@ -920,7 +922,7 @@
               let heroThumbnail;
               const serviceName = service.name;
               const servicePrice = service.price;
-              const serviceCategory = service.category;
+              const serviceCategory = service.categoryId.name;
               const serviceId = service._id;
               if (!isEmpty(service.thumbnails)) {
                 heroThumbnail =

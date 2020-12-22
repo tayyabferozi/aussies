@@ -300,52 +300,22 @@
 // }
 
 export class UserCtrl {
-  static getAllServices() {
-    axios
-      .get(`${Constants.defaultApiURI}/services/active-services`)
-      .then((res) => {
-        const { services } = res.data;
-        let servicesMarkup = "";
+  static BindCategory() {
+    axios.get(`${Constants.defaultApiURI}categories`).then((res) => {
+      const { categories } = res.data;
+      let servicesMarkup = "";
 
-        services.forEach((service) => {
-          let heroThumbnail;
-          const serviceName = service.name;
-          const servicePrice = service.price;
-          const serviceCategory = service.category;
-          const serviceId = service._id;
-          if (!isEmpty(service.thumbnails)) {
-            heroThumbnail =
-              Constants.defaultImageURI + service.thumbnails[0].filename;
-          }
+      categories.forEach((category) => {
+        const categoryName = category.name;
+        const categoryId = category._id;
 
-          servicesMarkup += `
-          <div class="col-lg-4 col-md-6">
-            <div class="single-product t-single-product mb-30">
-                <div class="product-img">
-                  <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
-                </div>
-                <div class="t-product-overlay" style="position:relative;">
-                  <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                  <span>${serviceCategory}</span>
-                  <!--<p>14 Sales</p>-->
-                  <div class="t-product-meta">
-                    <div class="t-product-rating">
-                      <!--<i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>-->
-                      <a href="product-details.html?service=${serviceId}">More Details</a>
-                    </div>
-                    <h6>$${servicePrice}</h6>
-                  </div>
-                </div>
-            </div>
-          </div>`;
-        });
-
-        $("#dvProduct").html(servicesMarkup);
+        servicesMarkup += `<a href="#" class="col text-center" style="background-color: white; padding: 20px; margin: 10px; box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px; color: inherit; font-size: 22px;">
+              <span>${categoryName}</span>
+            </a>`;
       });
+
+      $("#dvCategory").html(servicesMarkup);
+    });
   }
 
   static getServiceDetails() {

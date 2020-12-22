@@ -48,7 +48,7 @@
               let heroThumbnail;
               const serviceName = service.name;
               const servicePrice = service.price;
-              const serviceCategory = service.category;
+              const serviceCategory = service.categoryId.name;
               const serviceId = service._id;
               if (!isEmpty(service.thumbnails)) {
                 heroThumbnail =
