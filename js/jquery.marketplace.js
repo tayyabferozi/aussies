@@ -300,6 +300,27 @@
 // }
 
 export class UserCtrl {
+  static BindCategory() {
+    axios
+      .get(`${Constants.defaultApiURI}/categories`)
+      .then((res) => {
+        const { services } = res.data;
+        let servicesMarkup = "";
+
+        services.forEach((service) => {
+          const categoryName = category.name;
+          const categoryId = service._id;
+
+          servicesMarkup += 
+            `<a href="#" class="col text-center" style="background-color: white; padding: 20px; margin: 10px; box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px; color: inherit; font-size: 22px;">
+              <span>${categoryName}</span>
+            </a>`;
+
+        });
+
+        $("#dvCategory").html(servicesMarkup);
+      });
+  }
   static getAllServices() {
     axios
       .get(`${Constants.defaultApiURI}/services/active-services`)
