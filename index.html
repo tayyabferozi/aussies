@@ -191,176 +191,10 @@
                   <div class="row" id="sub-filter"></div>
                 </div>
                 <div class="container">
-                  <div class="row mt-5 justify-content-center">
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-utensils"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Dining</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-medkit"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Wellness and Beauty</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-skating"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Activities</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-plane"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Travel</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-shopping-bag"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Shopping</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-chart-line"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Services</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-wine-bottle"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Wine</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-star"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Personalised Gifts</span>
-                    </a>
-                  </div>
+                  <div
+                    class="row mt-5 justify-content-center"
+                    id="dvCategory"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -882,6 +716,8 @@
         readCookie,
       } from "./js/utils/utils.js";
 
+      UserCtrl.BindCategory();
+
       let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
 
       const selectedCategory = getParam("category");
@@ -920,7 +756,7 @@
               let heroThumbnail;
               const serviceName = service.name;
               const servicePrice = service.price;
-              const serviceCategory = service.category;
+              const serviceCategory = service.categoryId.name;
               const serviceId = service._id;
               if (!isEmpty(service.thumbnails)) {
                 heroThumbnail =
