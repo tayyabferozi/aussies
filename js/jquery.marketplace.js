@@ -302,7 +302,7 @@
 export class UserCtrl {
   static BindCategory() {
     axios
-      .get(`${Constants.defaultApiURI}/categories`)
+      .get(`${Constants.defaultApiURI}categories`)
       .then((res) => {
         const { services } = res.data;
         let servicesMarkup = "";
