@@ -307,23 +307,9 @@ export class UserCtrl {
 
       categories.forEach((category) => {
         const categoryName = category.name;
-        const categoryId = category._id;
-        // const categoryName = category._id;
-
-        const selectedCategory = getParam("category");
         // First priority to query param then fallback to cookie
         const selectedState =
           getParam("state") || readCookie("aussies-state-selection");
-        let page = getParam("page") || 1;
-
-        const link =
-          "//" +
-          location.host +
-          location.pathname +
-          "?category=" +
-          categoryName +
-          "&" +
-          location.search.substring(1);
 
         servicesMarkup += `<a href="index.html?category=${
           categoryName + "&state=" + selectedState
