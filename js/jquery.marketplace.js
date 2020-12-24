@@ -307,9 +307,13 @@ export class UserCtrl {
 
       categories.forEach((category) => {
         const categoryName = category.name;
-        const categoryId = category._id;
+        // First priority to query param then fallback to cookie
+        const selectedState =
+          getParam("state") || readCookie("aussies-state-selection");
 
-        servicesMarkup += `<a href="#" class="col text-center" style="background-color: white; padding: 20px; margin: 10px; box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px; color: inherit; font-size: 22px;">
+        servicesMarkup += `<a href="index.html?category=${
+          categoryName + "&state=" + selectedState
+        }" class="col text-center" style="background-color: white; padding: 20px; margin: 10px; box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px; color: inherit; font-size: 22px;">
               <span>${categoryName}</span>
             </a>`;
       });

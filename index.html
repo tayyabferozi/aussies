@@ -191,6 +191,7 @@
                   <div class="row" id="sub-filter"></div>
                 </div>
                 <div class="container">
+<<<<<<< HEAD
                   <div class="row mt-5 justify-content-center" id="dvCategory">
                     <a
                       href="#"
@@ -361,6 +362,12 @@
                       <span>Personalised Gifts</span>
                     </a>
                   </div>
+=======
+                  <div
+                    class="row mt-5 justify-content-center"
+                    id="dvCategory"
+                  ></div>
+>>>>>>> master
                 </div>
               </div>
             </div>
@@ -890,7 +897,7 @@
       // First priority to query param then fallback to cookie
       const selectedState =
         getParam("state") || readCookie("aussies-state-selection");
-      let page = getParam("page");
+      let page = getParam("page") || 1;
 
       const fetchServices = (selectedState) => {
         axios
@@ -902,21 +909,24 @@
           )
           .then((res) => {
             let { services } = res.data;
-            ({
-              hasNextPage,
-              hasPrevPage,
-              nextPage,
-              prevPage,
-              lastPage,
-              currentPage,
-            } = res.data);
             let servicesMarkup = "";
 
             if (!isEmpty(selectedCategory)) {
               services = services.filter((el) => {
-                return el.category === selectedCategory;
+                return el.categoryId.name === selectedCategory;
               });
             }
+
+            const ITEMS_PER_PAGE = 9;
+            const totalItems = services.length;
+
+            currentPage = page;
+            hasNextPage = ITEMS_PER_PAGE * page < totalItems;
+            hasPrevPage = page > 1;
+            nextPage = page + 1;
+            prevPage = page - 1;
+            lastPage = Math.ceil(totalItems / ITEMS_PER_PAGE);
+            hasNextPage = ITEMS_PER_PAGE * page < totalItems;
 
             services.forEach((service) => {
               let heroThumbnail;
@@ -937,7 +947,7 @@
                           </div>
                           <div class="t-product-overlay" style="position:relative;">
                             <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                            <span><a href="all-products.html?category=${
+                            <span><a href="index.html?category=${
                               serviceCategory + "&state=" + selectedState
                             }">${serviceCategory}</a> </span>
                             <!--<p>14 Sales</p>-->
