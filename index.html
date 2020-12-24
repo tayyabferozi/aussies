@@ -29,6 +29,12 @@
       .slider-search-form .nice-select {
         border-radius: 50px;
       }
+      
+      header .slider-search-form .nice-select{
+        padding:15px;
+        width: 160px;
+        font-size: 12px;
+      }
     </style>
     <link
       rel="stylesheet"
@@ -58,16 +64,51 @@
       <div class="header-top d-none d-md-block">
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
-              <div class="header-top-link">
-                <ul>
+            <div class="col">
+              <div>
+                <!-- <ul>
                   <li><a href="#">Market API</a></li>
                   <li><a href="#">Authors</a></li>
                   <li><a href="#">Meetups</a></li>
-                </ul>
+                </ul> -->
+                
+                <div class="container-fluid">
+                  <div
+                    class="row d-flex justify-content-center align-items-center"
+                    id="filter"
+                  >
+                    <div class="col-auto text-center text-md-right">
+                      <label class="m-0" for="stateFilter">
+                        <h5 class="m-0" style="font-size: 12px;">
+                          Select Your Preferred State:
+                        </h5>
+                      </label>
+                    </div>
+                    <div class="col text-center text-md-left">
+                      <div class="slider-search-form m-0">
+                        <select name="name" class="selected" id="stateFilter">
+                          <option value="Australia Wide">Australia Wide</option>
+                          <option value="New South Wales">
+                            New South Wales
+                          </option>
+                          <option value="Queensland">Queensland</option>
+                          <option value="Victoria">Victoria</option>
+                          <option value="Tasmania">Tasmania</option>
+                          <option value="Western Australia">
+                            Western Australia
+                          </option>
+                          <option value="South Australia">
+                            South Australia
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" id="sub-filter"></div>
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-auto my-auto">
               <div class="header-social text-right">
                 <ul>
                   <li class="become-seller">
@@ -156,7 +197,7 @@
               <div class="breadcrumb-wrap text-center" style="padding-top: 0px">
                 <h2>The platform to share deals, offers and promotions</h2>
                 <p>For small and medium size businesses</p>
-                <div class="container-fluid">
+                <div class="container-fluid d-md-none">
                   <div
                     class="row mt-5 d-flex justify-content-center align-items-center"
                     id="filter"
@@ -193,7 +234,7 @@
                 <div class="container">
 <<<<<<< HEAD
                   <div class="row mt-5 justify-content-center" id="dvCategory">
-                    <a
+                    <!-- <a
                       href="#"
                       class="col text-center"
                       style="
@@ -213,154 +254,7 @@
                         "
                       ></i>
                       <span>Dining</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-medkit"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Wellness and Beauty</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-skating"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Activities</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-plane"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Travel</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-shopping-bag"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Shopping</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-chart-line"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Services</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-wine-bottle"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Wine</span>
-                    </a>
-                    <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-star"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Personalised Gifts</span>
-                    </a>
+                    </a> -->
                   </div>
 =======
                   <div
@@ -376,7 +270,7 @@
       </section>
       <!-- breadcrumb-area-end -->
       <!-- product-area -->
-      <section class="product-area gray-bg pt-120 pb-120">
+      <section class="product-area gray-bg pt-60 pb-60">
         <div class="container pt-5">
           <div class="t-product-wrap">
             <div class="row" id="dvProduct">
@@ -618,120 +512,124 @@
     <!-- main-area-end -->
     <!-- footer -->
     <footer>
-      <div class="footer-top-wrap black-bg pt-90 pb-35">
+      <div class="footer-top-wrap pb-35">
+        <div class="footer-cat-wrap mb-35">
+          <div class="container">
+            <div class="row justify-content-center">
+              <a
+                href="index.html?state=Australia Wide"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Australia Wide</span>
+              </a>
+              <a
+                href="index.html?state=New South Wales"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>New South Wales</span>
+              </a>
+              <a
+                href="index.html?state=South Australia"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>South Australia</span>
+              </a>
+              <a
+                href="index.html?state=Queensland"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Queensland</span>
+              </a>
+              <a
+                href="index.html?state=Victoria"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Victoria</span>
+              </a>
+              <a
+                href="index.html?state=Tasmania"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Tasmania</span>
+              </a>
+              <a
+                href="index.html?state=Western Australia"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Western Australia</span>
+              </a>
+            </div>
+          </div>
+        </div>
         <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="logo text-center mb-30">
+          <div class="row justify-content-center">
+            <div class="col-auto my-auto">
+              <div class="logo text-center">
                 <a href="#"
                   ><img src="img/logo/s_logo_transparent.png" alt="Logo"
                 /></a>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="footer-cat-wrap">
-          <div class="container">
-            <div class="row f-cat-active">
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-wordpress-logo"></i>
-                    </div>
-                    <span>Wordpress</span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-plug-for-electrical-connection"></i>
-                    </div>
-                    <span>Plugins Free</span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-html-5-logo"></i>
-                    </div>
-                    <span>HTML Template</span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-joomla-logo"></i>
-                    </div>
-                    <span>Joolmal Template</span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-e-shopping-basket"></i>
-                    </div>
-                    <span>Shopify Themes</span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-gift"></i>
-                    </div>
-                    <span>Woocommerce</span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-wordpress-logo"></i>
-                    </div>
-                    <span>Wordpress</span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="single-footer-cat">
-                  <a href="#">
-                    <div class="footer-cat-icon">
-                      <i class="flaticon-wordpress-logo"></i>
-                    </div>
-                    <span>Wordpress</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="footer-widget mb-50 pr-80">
-                <div class="fw-title mb-30">
-                  <h5>About Market</h5>
-                </div>
-                <div class="footer-text mb-35">
-                  <p>
-                    Popularised in the with the release of etras sheets
-                    containing passages and more rcently with desop publishing
-                    software like Maker including versions.
-                  </p>
-                </div>
+            <div class="col-4 my-auto">
+              <div class="footer-widget mb-2 pr-80">
                 <div class="footer-social">
-                  <ul>
+                  <!-- <ul>
                     <li>
                       <a
                         target="_blank"
@@ -753,79 +651,8 @@
                         ><i class="fab fa-linkedin-in"></i
                       ></a>
                     </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6">
-              <div class="footer-widget mb-50">
-                <div class="fw-title mb-30">
-                  <h5>PRODUCT List</h5>
-                </div>
-                <div class="fw-link">
-                  <ul>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">LiveChat Benefits</a></li>
-                    <li><a href="#">Tour</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Use Cases</a></li>
-                    <li><a href="#">App</a></li>
-                    <li><a href="#">Marketplace</a></li>
-                    <li><a href="#">Updates</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
-              <div class="footer-widget mb-50">
-                <div class="fw-title mb-30">
-                  <h5>RESOURCES</h5>
-                </div>
-                <div class="fw-link">
-                  <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Infographics</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Podcast</a></li>
-                    <li><a href="#">Benchmark</a></li>
-                    <li><a href="#">Update</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
-              <div class="footer-widget mb-50">
-                <div class="fw-title mb-30">
-                  <h5>CUSTOMERS</h5>
-                </div>
-                <div class="fw-link">
-                  <ul>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">LiveChat Benefits</a></li>
-                    <li><a href="#">Tour</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Use Cases</a></li>
-                    <li><a href="#">App</a></li>
-                    <li><a href="#">Marketplace</a></li>
-                    <li><a href="#">Updates</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-4 col-md-3 col-sm-6">
-              <div class="footer-widget mb-50">
-                <div class="fw-title mb-30">
-                  <h5>SUPPORT center</h5>
-                </div>
-                <div class="fw-link">
-                  <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Community</a></li>
-                    <li><a href="#">Webinars</a></li>
-                    <li><a href="#">Experts Marketplace</a></li>
-                    <li><a href="#">API & Developers</a></li>
-                    <li><a href="#">System Status</a></li>
-                  </ul>
+                  </ul> -->
+                  <img src="img/icon/social-media.jpg" class="imgg-fluid w-100">
                 </div>
               </div>
             </div>
@@ -834,17 +661,12 @@
       </div>
       <div class="copyright-wrap">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-6 col-md-6">
+          <div class="row justify-content-center">
+            <div class="col-auto">
               <div class="copyright-text">
                 <p>
-                  Copyright © 2019 <a href="#">Makplus</a> All Rights Reserved.
+                  Copyright © 2020 <a href="index.html">Aussies Marketplace</a> All Rights Reserved.
                 </p>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 d-none d-md-block">
-              <div class="payment-method-img text-right">
-                <img src="img/images/card_img.png" alt="img" />
               </div>
             </div>
           </div>
