@@ -3441,22 +3441,24 @@ h5.vendor-wrap-title {
   margin-bottom: 0;
 }
 .copyright-wrap {
-  background: #1c212f;
+  background: #eeeeee;
+  /* background: #1c212f; */
   padding: 20px 0;
 }
 .copyright-text p {
-  color: #90949c;
+  /* color: #90949c; */
+  color: #444172;
   margin-bottom: 0;
 }
 .copyright-text p a {
   color: #ff4800;
 }
-.footer-cat-wrap {
+/* .footer-cat-wrap {
   background: #212635;
   border-top: 2px solid #1e2330;
   border-bottom: 2px solid #1e2330;
   margin-bottom: 75px;
-}
+} */
 .single-footer-cat {
   height: 125px;
   display: flex;
