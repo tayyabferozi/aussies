@@ -310,6 +310,12 @@ export class UserCtrl {
         const categoryId = category._id;
         // const categoryName = category._id;
 
+        const selectedCategory = getParam("category");
+        // First priority to query param then fallback to cookie
+        const selectedState =
+          getParam("state") || readCookie("aussies-state-selection");
+        let page = getParam("page") || 1;
+
         const link =
           "//" +
           location.host +
@@ -319,7 +325,9 @@ export class UserCtrl {
           "&" +
           location.search.substring(1);
 
-        servicesMarkup += `<a href="${link}" class="col text-center" style="background-color: white; padding: 20px; margin: 10px; box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px; color: inherit; font-size: 22px;">
+        servicesMarkup += `<a href="index.html?category=${
+          categoryName + "&state=" + selectedState
+        }" class="col text-center" style="background-color: white; padding: 20px; margin: 10px; box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px; color: inherit; font-size: 22px;">
               <span>${categoryName}</span>
             </a>`;
       });
