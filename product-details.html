@@ -155,11 +155,6 @@
               <div class="col-lg-8">
                 <div class="product-details-wrap">
                   <div id="imgThumbnail" class="product-details-thumb">
-                    <!-- <img
-                      id="imgThumbnail"
-                      src="img/product/product_details_img.jpg"
-                      alt="img"
-                    /> -->
                     <div class="lds-ripple">
                       <div></div>
                       <div></div>
@@ -503,7 +498,7 @@
                         <input type="hidden" id="CompanyID" />
                         <ul>
                           <li>
-                            <a href="#"
+                            <a id="seller-href" href="#"
                               >Seller Name:<span
                                 id="lblSellerName"
                                 style="margin: 0 4px"
@@ -566,9 +561,28 @@
                       Item Information
                     </h5>
                     <ul>
-                      <li>Price<span id="lblServicePrice"></span></li>
-                      <li>Categories<span id="lblServiceCategory"></span></li>
-                      <li>State<span id="lblState"></span></li>
+                      <li>
+                        Price<span id="lblServicePriceAgain"
+                          ><div class="lds-ripple">
+                            <div></div>
+                            <div></div></div
+                        ></span>
+                      </li>
+                      <li>
+                        Category<span id="lblServiceCategory"
+                          ><div class="lds-ripple">
+                            <div></div>
+                            <div></div></div
+                        ></span>
+                      </li>
+                      <li>
+                        State<span id="lblState"
+                          ><div class="lds-ripple">
+                            <div></div>
+                            <div></div>
+                          </div>
+                        </span>
+                      </li>
                     </ul>
                   </div>
                   <div class="product-sidebar-tag">
@@ -917,7 +931,7 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script type="module" src="js/jquery.marketplace.js"></script>
+    <script async type="module" src="js/jquery.marketplace.js"></script>
     <!-- <script>
             $(document).ready(function () {
                 UserCtrl.GetServiceDetails();

@@ -617,31 +617,58 @@
       $("#contact-form").submit(function (e) {
         e.preventDefault();
 
-        const name = $("[name='name']").val();
-        const email = $("[name='email']").val();
-        const phone = $("[name='phone']").val();
-        const subject = $("[name='subject']").val();
-        const message = $("[name='message']").val();
+        const nameField = $("[name='name']");
+        const emailField = $("[name='email']");
+        const phoneField = $("[name='phone']");
+        const subjectField = $("[name='subject']");
+        const messageField = $("[name='message']");
+
+        const name = nameField.val();
+        const email = emailField.val();
+        const phone = phoneField.val();
+        const subject = subjectField.val();
+        const message = messageField.val();
         $("#feedback-container").empty();
         $("#contact-submit-btn").attr("disabled", true);
         axios
-          .post(`${Constants.defaultApiURI}support/contact`, {
-            name,
-            email,
-            phone,
-            subject,
-            message,
-          })
+          .post(
+            `${Constants.defaultSupportAPI}supports/5feb86432b449d01f0423642`,
+            {
+              name,
+              email,
+              phone,
+              subject,
+              message,
+            }
+          )
           .then((res) => {
             const { msg } = res.data;
 
             $("#feedback-container").html(generateSuccessMarkup(msg));
+            nameField.empty();
+            emailField.empty();
+            phoneField.empty();
+            subjectField.empty();
+            messageField.empty();
           })
           .catch((err) => {
             console.log(err);
             let errorMessage;
             if (err.response) {
-              errorMessage = err.response.data.errors[0];
+              if (err.response.data.support) {
+                errorMessage = `${
+                  err.response.data.errors[0]
+                }. View your support <a href="${
+                  location.href +
+                  "//" +
+                  location.host +
+                  location.pathname +
+                  "?support=" +
+                  err.response.data.support.url
+                }">here</a>`;
+              } else {
+                errorMessage = err.response.data.errors[0];
+              }
             } else if (err.request) {
               errorMessage = "Network Error!";
             } else {

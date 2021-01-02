@@ -3954,3 +3954,33 @@ table.dataTable thead .sorting {
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled.next:hover {
   color: #0090a3 !important;
 }
+
+.carousel-control-prev {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.carousel-control-next {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+#statesBottom button {
+  color: grey;
+  background-color: black;
+  padding: 17px;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+  color: white;
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+}
