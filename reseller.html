@@ -479,10 +479,10 @@
         initializeTable();
       }
 
-      const resellerId = getParam("reseller-id") || 0;
+      const reseller = getParam("reseller") || 0;
 
       axios
-        .get(`${Constants.defaultApiURI}resellers/${resellerId}`)
+        .get(`${Constants.defaultApiURI}resellers/public/${reseller}`)
         .then((res) => {
           const {
             reseller: { businesses, smsCredits },
@@ -498,7 +498,7 @@
 
           $("#sms-credits-count").html(totalSmsCredits);
           $("#add-business-btn").html(
-            `<a href="add-business.html?reseller-id=${resellerId}">Add a business</a>`
+            `<a href="add-business.html?reseller=${reseller}">Add a business</a>`
           );
         })
         .catch((err) => {

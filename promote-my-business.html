@@ -635,7 +635,7 @@
         $("#promote-submit-btn").attr("disabled", true);
 
         axios
-          .post(`${Constants.defaultApiURI}support/promote-business`, {
+          .post(`${Constants.defaultSupportAPI}support/promote-business`, {
             businessName,
             businessWebsite,
             name,
