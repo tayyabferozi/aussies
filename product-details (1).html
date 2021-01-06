@@ -1,0 +1,940 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Makplus - Marketplace HTML5 Template</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/nice-select.css" />
+    <link rel="stylesheet" href="css/meanmenu.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <!-- preloader -->
+    <div id="preloader">
+      <div id="loading-center">
+        <div id="loading-center-absolute">
+          <div class="object" id="object_one"></div>
+          <div class="object" id="object_two"></div>
+          <div class="object" id="object_three"></div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader-end -->
+    <!-- header-area -->
+    <header>
+      <div class="header-top d-none d-md-block">
+        <div class="container">
+          <div class="row">
+            <div class="col"></div>
+            <div class="col-auto my-auto">
+              <div class="header-social text-right">
+                <ul class="d-flex">
+                  <li class="become-seller" style="margin-top: auto; margin-bottom: auto;">
+                    <a href="become-a-partner.html">Become a Partner</a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://www.facebook.com/aussiesmarketplace"
+                      ><i class="fab fa-facebook-square" style="font-size:32px;"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://www.instagram.com/aussiesmarketplace/"
+                      ><i class="fab fa-instagram" style="font-size:32px;"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://www.linkedin.com/company/aussiesmarketplace/"
+                      ><i class="fab fa-linkedin" style="font-size:32px;"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="header-sticky" class="menu-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="logo">
+                <a href="index.html">
+                  <img
+                    src="img/logo/s_logo.png"
+                    class="transparent-logo"
+                    alt="Logo"
+                  />
+                  <img src="img/logo/logo.png" class="sticky-logo" alt="Logo" />
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-6 col-sm-6 text-right">
+              <div class="main-menu s-main-menu d-none d-lg-inline-block">
+                <nav id="mobile-menu">
+                  <ul>
+                    <li>
+                      <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                      <a href="our-benefits.html">Our Benefits</a>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="header-btn d-none d-xl-inline-block">
+                <a href="promote-my-business.html" class="btn"
+                  ><i class="fas fa-user"></i>Promote my business</a
+                >
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mobile-menu"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header-area-end -->
+    <!-- main-area -->
+    <main>
+      <!-- breadcrumb-area -->
+      <section
+        class="breadcrumb-area d-flex align-items-center"
+        data-background="img/bg/breadcrumb_bg.jpg"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-wrap text-center">
+                <h2 id="lblServiceName"></h2>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb" id="olServiceCategory">
+                    <!--<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Product Details</li>-->
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- breadcrumb-area-end -->
+      <!-- product-details-area -->
+      <section class="product-details gray-bg pt-120 pb-120">
+        <div class="container">
+          <div class="t-product-wrap">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="product-details-wrap">
+                  <div id="imgThumbnail" class="product-details-thumb">
+                    <!-- <img
+                      id="imgThumbnail"
+                      src="img/product/product_details_img.jpg"
+                      alt="img"
+                    /> -->
+                    <div class="lds-ripple">
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </div>
+                  <div class="product-details-tab">
+                    <ul class="nav product-tab" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link btn active"
+                          id="item-details-tab"
+                          data-toggle="tab"
+                          href="#item-details"
+                          role="tab"
+                          aria-controls="item-details"
+                          aria-selected="true"
+                          >Description</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link btn"
+                          id="product-reviews-tab"
+                          data-toggle="tab"
+                          href="#product-reviews"
+                          role="tab"
+                          aria-controls="product-reviews"
+                          aria-selected="false"
+                          >Reviews</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link btn"
+                          id="product-support-tab"
+                          data-toggle="tab"
+                          href="#product-support"
+                          role="tab"
+                          aria-controls="product-support"
+                          aria-selected="false"
+                          >Support</a
+                        >
+                      </li>
+                    </ul>
+                    <div
+                      class="tab-content product-tab-content"
+                      id="myTabContent"
+                    >
+                      <div
+                        class="tab-pane fade show active"
+                        id="item-details"
+                        role="tabpanel"
+                        aria-labelledby="item-details-tab"
+                      >
+                        <div class="product-details-content">
+                          <!--<h3><label id="lblServiceName"></label></h3>-->
+                          <div id="dvServiceDescription">
+                            <div class="lds-ripple">
+                              <div></div>
+                              <div></div>
+                            </div>
+                          </div>
+                          <p class="product-details-note">
+                            Please Note : All images are only for demo preview
+                            and NOT included in purchase files.
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="product-reviews"
+                        role="tabpanel"
+                        aria-labelledby="product-reviews-tab"
+                      >
+                        <div class="item-comment-wrap">
+                          <div class="item-single-comment">
+                            <ul>
+                              <li>
+                                <div class="item-comment-avatar">
+                                  <a href="#"
+                                    ><img
+                                      src="img/product/item_comment_avatar01.jpg"
+                                      alt="img"
+                                  /></a>
+                                </div>
+                                <div class="item-comment-content">
+                                  <h5><a href="#">Theme Builder</a></h5>
+                                  <span>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                  </span>
+                                  <small>2 days ago</small>
+                                  <p>
+                                    There are many variations of passages of
+                                    available, but the majority have suffered
+                                    alteration humour.
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="item-single-comment">
+                            <ul>
+                              <li>
+                                <div class="item-comment-avatar">
+                                  <a href="#"
+                                    ><img
+                                      src="img/product/item_comment_avatar02.jpg"
+                                      alt="img"
+                                  /></a>
+                                </div>
+                                <div class="item-comment-content">
+                                  <h5><a href="#">Worls Theme</a></h5>
+                                  <span>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                  </span>
+                                  <small>3 days ago</small>
+                                  <p>
+                                    There are many variations of passages of
+                                    available, but the majority have suffered
+                                    alteration humour.
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="item-single-comment">
+                            <ul>
+                              <li>
+                                <div class="item-comment-avatar">
+                                  <a href="#"
+                                    ><img
+                                      src="img/product/item_comment_avatar03.jpg"
+                                      alt="img"
+                                  /></a>
+                                </div>
+                                <div class="item-comment-content">
+                                  <h5><a href="#">Theme Builder</a></h5>
+                                  <span>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                  </span>
+                                  <small>4 days ago</small>
+                                  <p>
+                                    There are many variations of passages of
+                                    available, but the majority have suffered
+                                    alteration humour.
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="item-single-comment">
+                            <ul>
+                              <li>
+                                <div class="item-comment-avatar">
+                                  <a href="#"
+                                    ><img
+                                      src="img/product/item_comment_avatar04.jpg"
+                                      alt="img"
+                                  /></a>
+                                </div>
+                                <div class="item-comment-content">
+                                  <h5><a href="#">Cloud Themes</a></h5>
+                                  <span>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                  </span>
+                                  <small>5 days ago</small>
+                                  <p>
+                                    There are many variations of passages of
+                                    available, but the majority have suffered
+                                    alteration humour.
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="item-comment-box">
+                            <h3>Leave a Comment</h3>
+                            <div class="item-comment-form">
+                              <form action="#">
+                                <textarea
+                                  name="message"
+                                  id="message"
+                                  placeholder="Your opinion *"
+                                ></textarea>
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <input
+                                      type="text"
+                                      placeholder="Your name"
+                                    />
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <input
+                                      type="email"
+                                      placeholder="Your Email *"
+                                    />
+                                  </div>
+                                </div>
+                                <button class="btn">Submit</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="product-support"
+                        role="tabpanel"
+                        aria-labelledby="product-support-tab"
+                      >
+                        <div class="product-details-content">
+                          <h3>Marktplus - Engineering WordPress Theme</h3>
+                          <p>
+                            There are many variations of passages of Lorem Ipsum
+                            available, but the majority have suffered alteration
+                            in some form, by injected humour, or randomised
+                            words which don't look even slightly believable. If
+                            you are going to use a passage of Lorem Ipsum, you
+                            need to be sure there isn't anything embarrassing
+                            hidde.
+                          </p>
+                          <p>
+                            But the majority have suffered alteration in some
+                            form, by injected humour, or domised words which
+                            don't look even slightly believable. If you are
+                            going to use a passage Lorem Ipsum, you need sure
+                            there isn't anything.
+                          </p>
+                          <div class="product-details-features">
+                            <h4>Features Marktplus</h4>
+                            <p>
+                              Alteration in some form, by injected humour, or
+                              domised words which.
+                            </p>
+                            <ul>
+                              <li>Full WooCommerce integration</li>
+                              <li>
+                                Compatible Browsers – IE9+, Chrome, Safari,
+                                Opera, Firefox
+                              </li>
+                              <li>
+                                All settings defined via customization API
+                              </li>
+                              <li>Files Included – php, html, JS, css</li>
+                              <li>Compatible with – Elementor</li>
+                            </ul>
+                          </div>
+                          <p>
+                            Majority have suffered alteration in some form, by
+                            injected humour, or domised words which don't look
+                            even slightly by injected humour, or domised have
+                            suffered alteration in some believable njected
+                            humour.
+                          </p>
+                          <div class="product-details-source">
+                            <h4>Sources and Credits:</h4>
+                            <p>
+                              A full list of all the sources and services we use
+                              to build :
+                            </p>
+                            <ul>
+                              <li>FontAwesome</li>
+                              <li>Parallax</li>
+                              <li>Owl carosel</li>
+                              <li>Free Image Used</li>
+                              <li>Google Font Use</li>
+                            </ul>
+                          </div>
+                          <p class="product-details-note">
+                            Please Note : All images are only for demo preview
+                            and NOT included in purchase files.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <aside class="vendor-profile-sidebar item-details-sidebar">
+                  <h5 class="vendor-wrap-title">DOWNLOAD DETAILS</h5>
+                  <div class="item-sidebar-action text-center">
+                    <div class="item-price-count mb-25">
+                      <div class="row justify-content-between p-2 mb-2" style="background-color: #ECECEC; border-radius: 5px;">
+                        <div class="col my-auto p-0">
+                          <div class="form-group d-flex mb-0">
+                            <input type="radio" name="radioPrice" id="price1" class="my-auto">
+                            <label for="price1" style="color: black; line-height: 16px; margin-left: 5px; text-align: left; font-size: 16px;">
+                              Oven Cleaning<br><span style="color: #858585;">One Oven</span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-auto p-0" style="text-align: end; line-height: 16px; font-size: 12px;">
+                          <h5 class="d-block mb-0">$65</h5>
+                          <span class="d-block" style="color: #858585; text-transform: uppercase;">Valued at $135</span>
+                          <span class="d-block" style="color: green; text-transform: uppercase;">Save 52% off</span>
+                        </div>
+                      </div>
+                      <div class="row justify-content-between p-2 mb-2" style="background-color: #ECECEC; border-radius: 5px;">
+                        <div class="col my-auto p-0">
+                          <div class="form-group d-flex mb-0">
+                            <input type="radio" name="radioPrice" id="price2" class="my-auto">
+                            <label for="price2" style="color: black; line-height: 16px; margin-left: 5px; text-align: left; font-size: 16px;">
+                              Room Cleaning<br><span style="color: #858585;">One Room</span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-auto p-0" style="text-align: end; line-height: 16px; font-size: 12px;">
+                          <h5 class="d-block mb-0">$69</h5>
+                          <span class="d-block" style="color: #858585; text-transform: uppercase;">Valued at $155</span>
+                          <span class="d-block" style="color: green; text-transform: uppercase;">Save 55% off</span>
+                        </div>
+                      </div>
+                      <div class="row justify-content-between p-2 mb-2" style="background-color: #ECECEC; border-radius: 5px;">
+                        <div class="col my-auto p-0">
+                          <div class="form-group d-flex mb-0">
+                            <input type="radio" name="radioPrice" id="price3" class="my-auto">
+                            <label for="price3" style="color: black; line-height: 16px; margin-left: 5px; text-align: left; font-size: 16px;">
+                              House Cleaning<br><span style="color: #858585;">3 Bedrooms, 3 Bathrooms, 1 Living Room</span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-auto p-0" style="text-align: end; line-height: 16px; font-size: 12px;">
+                          <h5 class="d-block mb-0">$85</h5>
+                          <span class="d-block" style="color: #858585; text-transform: uppercase;">Valued at $175</span>
+                          <span class="d-block" style="color: green; text-transform: uppercase;">Save 51% off</span>
+                        </div>
+                      </div>
+                      <h4>
+                        <label id="lblServicePrice">
+                          <div class="lds-ripple">
+                            <div></div>
+                            <div></div>
+                          </div>
+                        </label>
+                      </h4>
+                    </div>
+                    <div class="item-sidebar-btn mb-25">
+                      <a href="#" class="btn">$45.00 Purchase</a>
+                      <a
+                        href="#"
+                        class="btn item-prev-btn"
+                        data-toggle="modal"
+                        data-target="#contactModal"
+                        >Contact Us</a
+                      >
+                    </div>
+                    <div class="item-license">
+                      <form action="#">
+                        <input id="license-checkbox" type="checkbox" />
+                        <label for="license-checkbox"
+                          >Standard license - $39.00</label
+                        >
+                      </form>
+                    </div>
+                  </div>
+                  <div class="vendor-info-wrap text-center">
+                    <div class="vendor-thumb mb-10">
+                      <a href="#"
+                        ><img
+                          src="img/product/vendor_profile_img.png"
+                          alt="img"
+                      /></a>
+                    </div>
+                    <div class="vendor-info mb-25">
+                      <h4>Seller Info</h4>
+                    </div>
+                    <div class="widget mb-40">
+                      <div class="sidebar-cat">
+                        <input type="hidden" id="CompanyID" />
+                        <ul>
+                          <li>
+                            <a href="#"
+                              >Seller Name:<span
+                                id="lblSellerName"
+                                style="margin: 0 4px"
+                                ><div class="lds-ripple">
+                                  <div></div>
+                                  <div></div></div></span
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              >Email:<span
+                                id="lblSellerEmail"
+                                style="margin: 0 4px"
+                                ><div class="lds-ripple">
+                                  <div></div>
+                                  <div></div></div></span
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              >Phone No:<span
+                                id="lblSellerPhone"
+                                style="margin: 0 4px"
+                                ><div class="lds-ripple">
+                                  <div></div>
+                                  <div></div></div></span
+                            ></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="vendor-product-thumb">
+                      <ul>
+                        <li>
+                          <a href="#"
+                            ><img
+                              src="img/product/vendor_product_thumb01.jpg"
+                              alt="img"
+                          /></a>
+                        </li>
+                        <li>
+                          <a href="#"
+                            ><img
+                              src="img/product/vendor_product_thumb02.jpg"
+                              alt="img"
+                          /></a>
+                        </li>
+                        <li>
+                          <a href="#"
+                            ><img
+                              src="img/product/vendor_product_thumb03.jpg"
+                              alt="img"
+                          /></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sidebar-item-info">
+                    <h5 class="vendor-sidebar-title text-center">
+                      Item Information
+                    </h5>
+                    <ul>
+                      <li>Price<span id="lblServicePrice"></span></li>
+                      <li>Categories<span id="lblServiceCategory"></span></li>
+                      <li>State<span id="lblState"></span></li>
+                    </ul>
+                  </div>
+                  <div class="product-sidebar-tag">
+                    <h5 class="vendor-sidebar-title text-center">
+                      Product Tags
+                    </h5>
+                    <ul>
+                      <li><a href="#">News</a></li>
+                      <li><a href="#">Business</a></li>
+                      <li><a href="#">Who</a></li>
+                      <li><a href="#">Elementor</a></li>
+                      <li><a href="#">woocommerce</a></li>
+                      <li><a href="#">Creative</a></li>
+                      <li><a href="#">Bloger</a></li>
+                      <li><a href="#">Clean</a></li>
+                      <li><a href="#">Responsive</a></li>
+                      <li><a href="#">wordpress</a></li>
+                    </ul>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- product-details-area-end -->
+    </main>
+    <!-- main-area-end -->
+    <!-- footer -->
+    <!-- footer -->
+    <footer>
+      <div class="footer-top-wrap pb-35">
+        <div class="footer-cat-wrap mb-35">
+          <div class="container">
+            <div class="row justify-content-center">
+              <a
+                href="index.html?state=Australia Wide"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Australia Wide</span>
+              </a>
+              <a
+                href="index.html?state=New South Wales"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>New South Wales</span>
+              </a>
+              <a
+                href="index.html?state=South Australia"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>South Australia</span>
+              </a>
+              <a
+                href="index.html?state=Queensland"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Queensland</span>
+              </a>
+              <a
+                href="index.html?state=Victoria"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Victoria</span>
+              </a>
+              <a
+                href="index.html?state=Tasmania"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Tasmania</span>
+              </a>
+              <a
+                href="index.html?state=Western Australia"
+                class="col text-center"
+                style="
+                  color: grey;
+                  background-color: black;
+                  padding: 20px;
+                  margin: 10px;
+                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
+                  color: white;
+                "
+              >
+                <span>Western Australia</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-auto my-auto">
+              <div class="logo text-center">
+                <a href="#"
+                  ><img src="img/logo/s_logo_transparent.png" alt="Logo"
+                /></a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 my-auto">
+              <div class="footer-widget mb-2 pr-80">
+                <div class="footer-social">
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        target="_blank"
+                        href="https://www.facebook.com/aussiesmarketplace">
+                        <img src="img/icon/social-media-facebook.png" class="img-fluid w-100">
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a
+                        target="_blank"
+                        href="https://www.instagram.com/aussiesmarketplace/">
+                        <img src="img/icon/social-media-insta.png" class="img-fluid w-100">
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <img src="img/icon/social-media-youtube.png" class="img-fluid w-100">
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a href="#">
+                        <img src="img/icon/social-media-twitter.png" class="img-fluid w-100">
+                      </a>
+                    </div>
+                    <div class="col">
+                      <a
+                        target="_blank"
+                        href="https://www.linkedin.com/company/aussiesmarketplace/">
+                        <img src="img/icon/social-media-linkedin.png" class="img-fluid w-100">
+                      </a>
+                    </div>
+                  </div>
+                  <!-- <ul>
+                    <li>
+                      <a
+                        target="_blank"
+                        href="https://www.facebook.com/aussiesmarketplace"
+                        ><i class="fab fa-facebook-f"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        target="_blank"
+                        href="https://www.instagram.com/aussiesmarketplace/"
+                        ><i class="fab fa-instagram"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        target="_blank"
+                        href="https://www.linkedin.com/company/aussiesmarketplace/"
+                        ><i class="fab fa-linkedin-in"></i
+                      ></a>
+                    </li>
+                  </ul> -->
+                  <!-- <img src="img/icon/social-media.jpg" class="img-fluid w-100"> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-wrap">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <div class="copyright-text">
+                <p>
+                  Copyright © 2020 <a href="index.html">Aussies Marketplace</a> All Rights Reserved.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer-end -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="contactModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="contactModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="section-title s-section-title mb-40">
+                <span>contact form</span>
+                <h2>Fill in the form below</h2>
+              </div>
+              <div class="contact-form">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" placeholder="Your Name*" id="Name" />
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" placeholder="Your Email*" id="Email" />
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" placeholder="Your Phone*" id="Phone" />
+                  </div>
+                  <div class="col-md-6">
+                    <select
+                      class="form-control"
+                      id="ddlSupportCategory"
+                    ></select>
+                  </div>
+                </div>
+                <textarea
+                  name="message"
+                  id="Message"
+                  placeholder="Your Message"
+                ></textarea>
+                <button class="btn" id="btnSubmit">Submit Request</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+    <!-- JS here -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+      integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.meanmenu.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script type="module" src="js/jquery.marketplace.js"></script>
+    <!-- <script>
+            $(document).ready(function () {
+                UserCtrl.GetServiceDetails();
+            });
+            $("#btnSubmit").click(function () {
+                UserCtrl.CreateSupport();
+            });
+        </script> -->
+    <script type="module">
+      import { UserCtrl } from "./js/jquery.marketplace.js";
+      //     UserCtrl.GetServiceList();
+      $(document).ready(function () {
+        UserCtrl.getServiceDetails();
+      });
+    </script>
+  </body>
+</html>

@@ -338,6 +338,60 @@ export class UserCtrl {
         const categoryName = service.categoryId.name;
         const state = service.state;
 
+        if (!isEmpty(service.packages)) {
+          // let packageMarkup = `
+          // <div class="row p-3 mb-2 item-single-package">
+          //   <div class="col my-auto p-0">
+          //     <div class="form-group d-flex mb-0">
+          //       <input
+          //         type="radio"
+          //         name="radioPrice"
+          //         id="price1"
+          //         class="my-auto"
+          //       />
+          //       <label for="price1">
+          //         Oven Cleaning<br />
+          //         <span class="text-grey">One Oven</span>
+          //       </label>
+          //     </div>
+          //   </div>
+          //   <div class="col-auto p-0 desc">
+          //     <h5 class="d-block mb-0">$65</h5>
+          //     <span class="d-block text-uppercase text-grey">Valued at $135</span>
+          //     <span class="d-block text-success text-uppercase">Save 52% off</span>
+          //   </div>
+          // </div>
+          // `;
+
+          service.packages.forEach((el) => {
+            let packageMarkup = ` 
+            <div class="row p-3 mb-2 item-single-package">
+              <div class="col my-auto p-0">
+                <div class="form-group d-flex mb-0">
+                  <input
+                    type="radio"
+                    name="radioPrice"
+                    id="${el.name}"
+                    class="my-auto"
+                  />
+                  <label for="${el.name}">
+                    <div>${el.name}</div>
+                    <div class="text-grey mt-1">${el.description}</div>
+                  </label>
+                </div>
+              </div>
+              <div class="col-auto p-0 desc">
+                <h5 class="d-block mb-0">$${el.price}</h5>
+                <span class="d-block text-uppercase text-grey">Valued at $135</span>
+                <span class="d-block text-success text-uppercase">Save 52% off</span>
+              </div>
+            </div>
+            `;
+
+            $("#item-packages-container").append(packageMarkup);
+          });
+        }
+
         if (!isEmpty(service.thumbnails)) {
           // thumbnail =
           //   Constants.defaultImageURI + service.thumbnails[0].filename;
@@ -425,7 +479,8 @@ export class UserCtrl {
           console.log(err.message);
           errorMessage = err.message;
         }
-        // $("#imgThumbnail").html(generateErro/rMarkup(errorMessage));
+
+        $("#imgThumbnail").html(generateErrorMarkup(errorMessage));
 
         $("#dvServiceDescription").empty();
 
