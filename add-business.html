@@ -524,13 +524,13 @@
         readCookie,
       } from "./js/utils/utils.js";
 
-      const resellerId = getParam("reseller-id") || 0;
+      const reseller = getParam("reseller") || 0;
       $("#business-list-btn").html(
-        `<a href="reseller.html?reseller-id=${resellerId}">View businesses list</a>`
+        `<a href="reseller.html?reseller=${reseller}">View businesses list</a>`
       );
 
       axios
-        .get(`${Constants.defaultApiURI}resellers/${resellerId}`)
+        .get(`${Constants.defaultApiURI}resellers/public/${reseller}`)
         .then((res) => {
           const {
             reseller: { businesses, smsCredits },
@@ -561,21 +561,30 @@
       $("#business-form").submit(function (e) {
         e.preventDefault();
 
-        const name = $("[name='name']").val();
-        const email = $("[name='email']").val();
-        const phone = $("[name='phone']").val();
-        const personName = $("[name='person-name']").val();
-        const website = $("[name='website']").val();
-        const facebook = $("[name='facebook']").val();
-        const instagram = $("[name='instagram']").val();
-        const linkedIn = $("[name='linkedIn']").val();
+        const nameField = $("[name='name']");
+        const emailField = $("[name='email']");
+        const phoneField = $("[name='phone']");
+        const personNameField = $("[name='person-name']");
+        const websiteField = $("[name='website']");
+        const facebookField = $("[name='facebook']");
+        const instagramField = $("[name='instagram']");
+        const linkedInField = $("[name='linkedIn']");
+
+        const name = nameField.val();
+        const email = emailField.val();
+        const phone = phoneField.val();
+        const personName = personNameField.val();
+        const website = websiteField.val();
+        const facebook = facebookField.val();
+        const instagram = instagramField.val();
+        const linkedIn = linkedInField.val();
 
         $("#feedback-container").empty();
         $("#business-submit-btn").attr("disabled", true);
 
         axios
           .post(
-            `${Constants.defaultApiURI}resellers/${resellerId}/businesses`,
+            `${Constants.defaultApiURI}resellers/public/${reseller}/businesses`,
             {
               name,
               email,
@@ -591,6 +600,15 @@
             const { msg } = res.data;
 
             $("#feedback-container").html(generateSuccessMarkup(msg));
+
+            nameField.empty();
+            emailField.empty();
+            phoneField.empty();
+            personNameField.empty();
+            websiteField.empty();
+            facebookField.empty();
+            instagramField.empty();
+            linkedInField.empty();
           })
           .catch((err) => {
             console.log(err);

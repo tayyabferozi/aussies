@@ -587,19 +587,21 @@
         const email = $("[name='email']").val();
         const phone = $("[name='phone']").val();
         const message = $("[name='message']").val();
+        message = `Business Name: ${businessName}; Business Website: ${businessWebsite}. ${message}`;
 
         $("#feedback-container").empty();
         $("#promote-submit-btn").attr("disabled", true);
 
         axios
-          .post(`${Constants.defaultApiURI}support/promote-business`, {
-            businessName,
-            businessWebsite,
-            name,
-            email,
-            phone,
-            message,
-          })
+          .post(
+            `${Constants.defaultSupportAPI}supports/5feb86432b449d01f0423642`,
+            {
+              name,
+              email,
+              phone,
+              message,
+            }
+          )
           .then((res) => {
             const { msg } = res.data;
 

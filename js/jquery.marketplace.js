@@ -309,7 +309,7 @@ export class UserCtrl {
         const categoryName = category.name;
         const categoryId = category._id;
         const state = getParam("state");
-        if(state == null || state == undefined){
+        if (state == null || state == undefined) {
           state = "Australia Wide";
         }
 
@@ -328,22 +328,126 @@ export class UserCtrl {
     axios
       .get(`${Constants.defaultApiURI}services/service-details/${serviceId}`)
       .then((res) => {
-        const service = res.data.service;
+        const { service } = res.data;
         let thumbnail;
         const description = service.description;
         const price = service.price;
         const sellerName = service.sellerId.name;
         const sellerEmail = service.sellerId.email;
         const sellerPhone = service.sellerId.phone;
+        const categoryName = service.categoryId.name;
+        const state = service.state;
 
-        if (!isEmpty(service.thumbnails)) {
-          thumbnail =
-            Constants.defaultImageURI + service.thumbnails[0].filename;
+        if (!isEmpty(service.packages)) {
+          // let packageMarkup = `
+          // <div class="row p-3 mb-2 item-single-package">
+          //   <div class="col my-auto p-0">
+          //     <div class="form-group d-flex mb-0">
+          //       <input
+          //         type="radio"
+          //         name="radioPrice"
+          //         id="price1"
+          //         class="my-auto"
+          //       />
+          //       <label for="price1">
+          //         Oven Cleaning<br />
+          //         <span class="text-grey">One Oven</span>
+          //       </label>
+          //     </div>
+          //   </div>
+          //   <div class="col-auto p-0 desc">
+          //     <h5 class="d-block mb-0">$65</h5>
+          //     <span class="d-block text-uppercase text-grey">Valued at $135</span>
+          //     <span class="d-block text-success text-uppercase">Save 52% off</span>
+          //   </div>
+          // </div>
+          // `;
+
+          service.packages.forEach((el) => {
+            let packageMarkup = ` 
+            <div class="row p-3 mb-2 item-single-package">
+              <div class="col my-auto p-0">
+                <div class="form-group d-flex mb-0">
+                  <input
+                    type="radio"
+                    name="radioPrice"
+                    id="${el.name}"
+                    class="my-auto"
+                  />
+                  <label for="${el.name}">
+                    <div>${el.name}</div>
+                    <div class="text-grey mt-1">${el.description}</div>
+                  </label>
+                </div>
+              </div>
+              <div class="col-auto p-0 desc">
+                <h5 class="d-block mb-0">$${el.price}</h5>
+                <span class="d-block text-uppercase text-grey">Valued at $135</span>
+                <span class="d-block text-success text-uppercase">Save 52% off</span>
+              </div>
+            </div>
+            `;
+
+            $("#item-packages-container").append(packageMarkup);
+          });
         }
 
-        $("#imgThumbnail").html(`
-        <img src="${thumbnail}">
-        `);
+        if (!isEmpty(service.thumbnails)) {
+          // thumbnail =
+          //   Constants.defaultImageURI + service.thumbnails[0].filename;
+          let carouselStartMarkup = `
+          <div id="thumbnailCarousel" class="carousel slide" data-ride="carousel">
+           <ol class="carousel-indicators">
+          `;
+
+          let carouselIndicatorsMainMarkup = "";
+          let carouselInnerStartMarkup = `
+          </ol>
+          <div class="carousel-inner">
+          `;
+          let carouselInnerMarkup = "";
+          let carouselEndMarkup = `
+          </div>
+            <a class="carousel-control-prev" href="#thumbnailCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#thumbnailCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          `;
+
+          service.thumbnails.forEach((el, idx) => {
+            carouselIndicatorsMainMarkup += `
+            <li data-target="#thumbnailCarousel" data-slide-to="${idx}" class="${
+              idx === 0 ? "active" : ""
+            }"></li>
+            `;
+            carouselInnerMarkup += `
+            <div class="carousel-item ${idx === 0 ? "active" : ""}">
+              <img
+                class="d-block w-100"
+                src="${Constants.defaultImageURI + el.filename}"
+                alt="First slide"
+              />
+            </div>
+            `;
+          });
+
+          $("#imgThumbnail").html(
+            carouselStartMarkup +
+              carouselIndicatorsMainMarkup +
+              carouselInnerStartMarkup +
+              carouselInnerMarkup +
+              carouselEndMarkup
+          );
+        } else {
+          $("#imgThumbnail").html(
+            "<h2 class='text-center'>No thumbnails to show</h2>"
+          );
+        }
 
         $("#dvServiceDescription").html(description);
 
@@ -354,6 +458,17 @@ export class UserCtrl {
         $("#lblSellerEmail").html(sellerEmail);
 
         $("#lblSellerPhone").html(sellerPhone);
+
+        $("#lblServicePriceAgain").html(price);
+
+        $("#lblState").html(state);
+
+        $("#seller-href").attr(
+          "href",
+          `index.html?seller=${service.sellerId._id}`
+        );
+
+        $("#lblServiceCategory").html(categoryName);
       })
       .catch((err) => {
         let errorMessage;
@@ -364,6 +479,7 @@ export class UserCtrl {
           console.log(err.message);
           errorMessage = err.message;
         }
+
         $("#imgThumbnail").html(generateErrorMarkup(errorMessage));
 
         $("#dvServiceDescription").empty();

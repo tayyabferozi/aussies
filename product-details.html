@@ -151,11 +151,6 @@
               <div class="col-lg-8">
                 <div class="product-details-wrap">
                   <div id="imgThumbnail" class="product-details-thumb">
-                    <!-- <img
-                      id="imgThumbnail"
-                      src="img/product/product_details_img.jpg"
-                      alt="img"
-                    /> -->
                     <div class="lds-ripple">
                       <div></div>
                       <div></div>
@@ -198,6 +193,17 @@
                           aria-selected="false"
                           >Support</a
                         >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link btn"
+                          data-toggle="tab"
+                          role="tab"
+                          aria-selected="false"
+                          onclick="history.back()"
+                        >
+                          Back
+                        </a>
                       </li>
                     </ul>
                     <div
@@ -454,6 +460,11 @@
                 <aside class="vendor-profile-sidebar item-details-sidebar">
                   <h5 class="vendor-wrap-title">DOWNLOAD DETAILS</h5>
                   <div class="item-sidebar-action text-center">
+                    <div
+                      id="item-packages-container"
+                      class="item-packages-container mb-25"
+                    ></div>
+
                     <div class="item-price-count mb-25">
                       <div class="row justify-content-between p-2 mb-2" style="background-color: #ECECEC; border-radius: 5px;">
                         <div class="col my-auto p-0">
@@ -544,7 +555,7 @@
                         <input type="hidden" id="CompanyID" />
                         <ul>
                           <li>
-                            <a href="#"
+                            <a id="seller-href" href="#"
                               >Seller Name:<span
                                 id="lblSellerName"
                                 style="margin: 0 4px"
@@ -607,9 +618,28 @@
                       Item Information
                     </h5>
                     <ul>
-                      <li>Price<span id="lblServicePrice"></span></li>
-                      <li>Categories<span id="lblServiceCategory"></span></li>
-                      <li>State<span id="lblState"></span></li>
+                      <li>
+                        Price<span id="lblServicePriceAgain"
+                          ><div class="lds-ripple">
+                            <div></div>
+                            <div></div></div
+                        ></span>
+                      </li>
+                      <li>
+                        Category<span id="lblServiceCategory"
+                          ><div class="lds-ripple">
+                            <div></div>
+                            <div></div></div
+                        ></span>
+                      </li>
+                      <li>
+                        State<span id="lblState"
+                          ><div class="lds-ripple">
+                            <div></div>
+                            <div></div>
+                          </div>
+                        </span>
+                      </li>
                     </ul>
                   </div>
                   <div class="product-sidebar-tag">
@@ -867,20 +897,14 @@
               </div>
               <div class="contact-form">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <input type="text" placeholder="Your Name*" id="Name" />
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <input type="email" placeholder="Your Email*" id="Email" />
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <input type="text" placeholder="Your Phone*" id="Phone" />
-                  </div>
-                  <div class="col-md-6">
-                    <select
-                      class="form-control"
-                      id="ddlSupportCategory"
-                    ></select>
                   </div>
                 </div>
                 <textarea
@@ -920,7 +944,7 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script type="module" src="js/jquery.marketplace.js"></script>
+    <script async type="module" src="js/jquery.marketplace.js"></script>
     <!-- <script>
             $(document).ready(function () {
                 UserCtrl.GetServiceDetails();

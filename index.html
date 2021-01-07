@@ -29,9 +29,9 @@
       .slider-search-form .nice-select {
         border-radius: 50px;
       }
-      
-      header .slider-search-form .nice-select{
-        padding:15px;
+
+      header .slider-search-form .nice-select {
+        padding: 15px;
         width: 160px;
         font-size: 12px;
       }
@@ -71,7 +71,7 @@
                   <li><a href="#">Authors</a></li>
                   <li><a href="#">Meetups</a></li>
                 </ul> -->
-                
+
                 <div class="container-fluid">
                   <div
                     class="row d-flex justify-content-center align-items-center"
@@ -79,7 +79,7 @@
                   >
                     <div class="col-auto text-center text-md-right">
                       <label class="m-0" for="stateFilter">
-                        <h5 class="m-0" style="font-size: 12px;">
+                        <h5 class="m-0" style="font-size: 12px">
                           Select Your Preferred State:
                         </h5>
                       </label>
@@ -232,29 +232,10 @@
                   <div class="row" id="sub-filter"></div>
                 </div>
                 <div class="container">
-                  <div class="row mt-5 justify-content-center" id="dvCategory">
-                    <!-- <a
-                      href="#"
-                      class="col text-center"
-                      style="
-                        background-color: white;
-                        padding: 20px;
-                        margin: 10px;
-                        box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                        color: inherit;
-                      "
-                    >
-                      <i
-                        class="fa fa-utensils"
-                        style="
-                          display: block;
-                          font-size: 32px;
-                          margin-bottom: 10px;
-                        "
-                      ></i>
-                      <span>Dining</span>
-                    </a> -->
-                  </div>
+                  <div
+                    class="row mt-5 justify-content-center"
+                    id="dvCategory"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -508,105 +489,28 @@
       <div class="footer-top-wrap pb-35">
         <div class="footer-cat-wrap mb-35">
           <div class="container">
-            <div class="row justify-content-center">
-              <a
-                href="index.html?state=Australia Wide"
-                class="col text-center"
-                style="
-                  color: grey;
-                  background-color: black;
-                  padding: 20px;
-                  margin: 10px;
-                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                  color: white;
-                "
-              >
+            <div class="row justify-content-center" id="statesBottom">
+              <button data-value="Australia Wide" class="col">
                 <span>Australia Wide</span>
-              </a>
-              <a
-                href="index.html?state=New South Wales"
-                class="col text-center"
-                style="
-                  color: grey;
-                  background-color: black;
-                  padding: 20px;
-                  margin: 10px;
-                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                  color: white;
-                "
-              >
+              </button>
+              <button data-value="New South Wales" class="col">
                 <span>New South Wales</span>
-              </a>
-              <a
-                href="index.html?state=South Australia"
-                class="col text-center"
-                style="
-                  color: grey;
-                  background-color: black;
-                  padding: 20px;
-                  margin: 10px;
-                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                  color: white;
-                "
-              >
+              </button>
+              <button data-value="South Australia" class="col">
                 <span>South Australia</span>
-              </a>
-              <a
-                href="index.html?state=Queensland"
-                class="col text-center"
-                style="
-                  color: grey;
-                  background-color: black;
-                  padding: 20px;
-                  margin: 10px;
-                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                  color: white;
-                "
-              >
+              </button>
+              <button data-value="Queensland" class="col">
                 <span>Queensland</span>
-              </a>
-              <a
-                href="index.html?state=Victoria"
-                class="col text-center"
-                style="
-                  color: grey;
-                  background-color: black;
-                  padding: 20px;
-                  margin: 10px;
-                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                  color: white;
-                "
-              >
+              </button>
+              <button data-value="Victoria" class="col">
                 <span>Victoria</span>
-              </a>
-              <a
-                href="index.html?state=Tasmania"
-                class="col text-center"
-                style="
-                  color: grey;
-                  background-color: black;
-                  padding: 20px;
-                  margin: 10px;
-                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                  color: white;
-                "
-              >
+              </button>
+              <button data-value="Tasmania" class="col">
                 <span>Tasmania</span>
-              </a>
-              <a
-                href="index.html?state=Western Australia"
-                class="col text-center"
-                style="
-                  color: grey;
-                  background-color: black;
-                  padding: 20px;
-                  margin: 10px;
-                  box-shadow: rgba(0, 0, 0, 0.07) 5px 6px 7px 0px;
-                  color: white;
-                "
-              >
+              </button>
+              <button data-value="Western Australia" class="col">
                 <span>Western Australia</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -691,7 +595,9 @@
             <div class="col-auto">
               <div class="copyright-text">
                 <p>
-                  Copyright © 2020 <a href="index.html">Aussies Marketplace</a> All Rights Reserved.
+                  Copyright © 2020
+                  <a href="index.html">Aussies Marketplace</a> All Rights
+                  Reserved.
                 </p>
               </div>
             </div>
@@ -739,39 +645,57 @@
 
       UserCtrl.BindCategory();
 
-      let currentPage, hasNextPage, hasPrevPage, nextPage, prevPage, lastPage;
+      let currentPage,
+        hasNextPage,
+        hasPrevPage,
+        nextPage,
+        prevPage,
+        lastPage,
+        totalItems;
 
       const selectedCategory = getParam("category");
       // First priority to query param then fallback to cookie
-      const selectedState =
+      let selectedState =
         getParam("state") || readCookie("aussies-state-selection");
-      let page = getParam("page");
+
+      if (selectedState === "null" || selectedState === "undefined") {
+        selectedState = "";
+      }
+
+      const selectedSeller = getParam("seller");
+
+      // let page = getParam("page") || 1;
 
       const fetchServices = (selectedState) => {
         axios
-          .post(
-            `${Constants.defaultApiURI}services/filtered-by-state?page=${page}`,
-            {
-              state: selectedState ? selectedState : "Australia Wide",
-            }
-          )
+          .post(`${Constants.defaultApiURI}services/filtered-by-state`, {
+            state: selectedState ? selectedState : "Australia Wide",
+          })
           .then((res) => {
-            let { services } = res.data;
-            ({
-              hasNextPage,
-              hasPrevPage,
-              nextPage,
-              prevPage,
-              lastPage,
-              currentPage,
-            } = res.data);
+            let { services, totalItems } = res.data;
             let servicesMarkup = "";
 
             if (!isEmpty(selectedCategory)) {
               services = services.filter((el) => {
-                return el.category === selectedCategory;
+                return el.categoryId.name === selectedCategory;
               });
             }
+
+            if (!isEmpty(selectedSeller)) {
+              services = services.filter((el) => {
+                return el.sellerId._id === selectedSeller;
+              });
+            }
+
+            // const ITEMS_PER_PAGE = 9;
+
+            // currentPage = page;
+            // hasNextPage = ITEMS_PER_PAGE * page < totalItems;
+            // hasPrevPage = page > 1;
+            // nextPage = page + 1;
+            // prevPage = page - 1;
+            // lastPage = Math.ceil(totalItems / ITEMS_PER_PAGE);
+            // hasNextPage = ITEMS_PER_PAGE * page < totalItems;
 
             services.forEach((service) => {
               let heroThumbnail;
@@ -792,7 +716,7 @@
                           </div>
                           <div class="t-product-overlay" style="position:relative;">
                             <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
-                            <span><a href="all-products.html?category=${
+                            <span><a href="index.html?category=${
                               serviceCategory + "&state=" + selectedState
                             }">${serviceCategory}</a> </span>
                             <!--<p>14 Sales</p>-->
@@ -816,50 +740,50 @@
 
             let basePath = `index.html?category=${selectedCategory}&state=${selectedState}`;
 
-            let paginationMarkup = `
+            // let paginationMarkup = `
 
-            `;
+            // `;
 
-            if (hasPrevPage) {
-              paginationMarkup += `
-              <li class="page-item">
-               <a href="${basePath}&page=${prevPage}"><i class="fas fa-chevron-left"></i></a>
-             </li>`;
-            }
+            // if (hasPrevPage) {
+            //   paginationMarkup += `
+            //   <li class="page-item">
+            //    <a href="${basePath}&page=${prevPage}"><i class="fas fa-chevron-left"></i></a>
+            //  </li>`;
+            // }
 
-            if (hasPrevPage && prevPage) {
-              paginationMarkup += `
-              <li class="page-item"><a href="${basePath}&page=${prevPage}">${prevPage}</a></li>
-              `;
-            }
+            // if (hasPrevPage && prevPage) {
+            //   paginationMarkup += `
+            //   <li class="page-item"><a href="${basePath}&page=${prevPage}">${prevPage}</a></li>
+            //   `;
+            // }
 
-            if (currentPage) {
-              paginationMarkup += `
-              <li class="page-item active"><a href="${basePath}&page=${currentPage}">${currentPage}</a></li>
-              `;
-            }
+            // if (currentPage) {
+            //   paginationMarkup += `
+            //   <li class="page-item active"><a href="${basePath}&page=${currentPage}">${currentPage}</a></li>
+            //   `;
+            // }
 
-            if (hasNextPage && nextPage) {
-              paginationMarkup += `
-              <li class="page-item"><a href="${basePath}&page=${nextPage}">${nextPage}</a></li>
-              `;
-            }
+            // if (hasNextPage && nextPage) {
+            //   paginationMarkup += `
+            //   <li class="page-item"><a href="${basePath}&page=${nextPage}">${nextPage}</a></li>
+            //   `;
+            // }
 
-            if (hasNextPage && lastPage && lastPage !== nextPage) {
-              paginationMarkup += `
-              <li class="page-item">...</li>
-              <li class="page-item"><a href="${basePath}&page=${lastPage}">${lastPage}</a></li>
-              `;
-            }
+            // if (hasNextPage && lastPage && lastPage !== nextPage) {
+            //   paginationMarkup += `
+            //   <li class="page-item">...</li>
+            //   <li class="page-item"><a href="${basePath}&page=${lastPage}">${lastPage}</a></li>
+            //   `;
+            // }
 
-            if (hasNextPage && nextPage) {
-              paginationMarkup += `
-              <li class="page-item">
-                <a href="${basePath}&page=${nextPage}"><i class="fas fa-chevron-right"></i></a>
-              </li>`;
-            }
+            // if (hasNextPage && nextPage) {
+            //   paginationMarkup += `
+            //   <li class="page-item">
+            //     <a href="${basePath}&page=${nextPage}"><i class="fas fa-chevron-right"></i></a>
+            //   </li>`;
+            // }
 
-            $("#ulPagination").html(paginationMarkup);
+            // $("#ulPagination").html(paginationMarkup);
           })
           .catch((err) => {
             console.log(err);
@@ -876,6 +800,18 @@
       };
 
       $(document).ready(function () {
+        $("#statesBottom button").click(function () {
+          const selectedState = $(this).attr("data-value");
+
+          window.location.href =
+            "//" +
+            location.host +
+            location.pathname +
+            "?state=" +
+            selectedState +
+            "&seller=" +
+            selectedSeller;
+        });
         $("#stateFilter").change(function () {
           const selectedState = $(this).val();
 
@@ -884,7 +820,9 @@
             location.host +
             location.pathname +
             "?state=" +
-            selectedState;
+            selectedState +
+            "&seller=" +
+            selectedSeller;
         });
 
         if (!isEmpty(selectedState)) {
