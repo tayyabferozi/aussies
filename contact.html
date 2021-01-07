@@ -200,13 +200,6 @@
                     <div class="col-md-6">
                       <input name="phone" type="tel" placeholder="Phone*" />
                     </div>
-                    <div class="col-md-6">
-                      <input
-                        name="subject"
-                        type="text"
-                        placeholder="Subject*"
-                      />
-                    </div>
                   </div>
                   <textarea
                     name="message"
@@ -620,13 +613,11 @@
         const nameField = $("[name='name']");
         const emailField = $("[name='email']");
         const phoneField = $("[name='phone']");
-        const subjectField = $("[name='subject']");
         const messageField = $("[name='message']");
 
         const name = nameField.val();
         const email = emailField.val();
         const phone = phoneField.val();
-        const subject = subjectField.val();
         const message = messageField.val();
         $("#feedback-container").empty();
         $("#contact-submit-btn").attr("disabled", true);
@@ -637,7 +628,6 @@
               name,
               email,
               phone,
-              subject,
               message,
             }
           )
@@ -648,7 +638,6 @@
             nameField.empty();
             emailField.empty();
             phoneField.empty();
-            subjectField.empty();
             messageField.empty();
           })
           .catch((err) => {
