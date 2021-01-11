@@ -235,10 +235,6 @@
                               <div></div>
                             </div>
                           </div>
-                          <p class="product-details-note">
-                            Please Note : All images are only for demo preview
-                            and NOT included in purchase files.
-                          </p>
                         </div>
                       </div>
                       <!-- <div
@@ -477,32 +473,31 @@
                     ></div>
 
                     <div class="item-price-count mb-25">
-                      <h4>
+                      <!-- <h4>
                         <label id="lblServicePrice">
                           <div class="lds-ripple">
                             <div></div>
                             <div></div>
                           </div>
                         </label>
-                      </h4>
+                      </h4> -->
                     </div>
                     <div class="item-sidebar-btn mb-25">
-                      <a href="#" class="btn">$45.00 Purchase</a>
+                      <a href="#" class="btn">
+                        <span id="lblServicePrice">
+                          <div class="lds-ripple">
+                            <div></div>
+                            <div></div>
+                          </div>
+                        </span> Buy Now
+                      </a>
                       <a
                         href="#"
                         class="btn item-prev-btn"
                         data-toggle="modal"
                         data-target="#contactModal"
-                        >Contact Us</a
+                        >Contact Seller</a
                       >
-                    </div>
-                    <div class="item-license">
-                      <form action="#">
-                        <input id="license-checkbox" type="checkbox" />
-                        <label for="license-checkbox"
-                          >Standard license - $39.00</label
-                        >
-                      </form>
                     </div>
                   </div>
                   <div class="vendor-info-wrap text-center">
@@ -521,7 +516,7 @@
                         <input type="hidden" id="CompanyID" />
                         <ul>
                           <li>
-                            <a id="seller-href" href="#"
+                            <a id="seller-href" href="#" class="text-left"
                               >Seller Name:<span
                                 id="lblSellerName"
                                 style="margin: 0 4px"
@@ -531,7 +526,7 @@
                             ></a>
                           </li>
                           <li>
-                            <a href="#"
+                            <a href="#" class="text-left"
                               >Email:<span
                                 id="lblSellerEmail"
                                 style="margin: 0 4px"
@@ -541,9 +536,19 @@
                             ></a>
                           </li>
                           <li>
-                            <a href="#"
+                            <a href="#" class="text-left"
                               >Phone No:<span
                                 id="lblSellerPhone"
+                                style="margin: 0 4px"
+                                ><div class="lds-ripple">
+                                  <div></div>
+                                  <div></div></div></span
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#" class="text-left"
+                              >Website:<span
+                                id="lblSellerWebsite"
                                 style="margin: 0 4px"
                                 ><div class="lds-ripple">
                                   <div></div>
@@ -581,7 +586,7 @@
                   </div>
                   <div class="sidebar-item-info">
                     <h5 class="vendor-sidebar-title text-center">
-                      Item Information
+                      Service Information
                     </h5>
                     <ul>
                       <li>
@@ -610,9 +615,10 @@
                   </div>
                   <div class="product-sidebar-tag">
                     <h5 class="vendor-sidebar-title text-center">
-                      Product Tags
+                      Service Tags
                     </h5>
-                    <ul>
+                    <p>Service tags will be displayed here</p>
+                    <!-- <ul>
                       <li><a href="#">News</a></li>
                       <li><a href="#">Business</a></li>
                       <li><a href="#">Who</a></li>
@@ -623,7 +629,7 @@
                       <li><a href="#">Clean</a></li>
                       <li><a href="#">Responsive</a></li>
                       <li><a href="#">wordpress</a></li>
-                    </ul>
+                    </ul> -->
                   </div>
                 </aside>
               </div>

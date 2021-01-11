@@ -330,11 +330,14 @@ export class UserCtrl {
       .then((res) => {
         const { service } = res.data;
         let thumbnail;
+        const name = service.name;
         const description = service.description;
         const price = service.price;
         const sellerName = service.sellerId.name;
         const sellerEmail = service.sellerId.email;
         const sellerPhone = service.sellerId.phone;
+        // const sellerWebsite = service.sellerId.website;
+        const sellerWebsite = "Website here";
         const categoryName = service.categoryId.name;
         const state = service.state;
 
@@ -447,9 +450,9 @@ export class UserCtrl {
           $("#imgThumbnail").html(
             "<h2 class='text-center'>No thumbnails to show</h2>"
           );
-        }
-
-        $("#dvServiceDescription").html(description);
+        };
+        
+        $("#dvServiceDescription").html("<h1>" + name + "</h1>" + description);
 
         $("#lblServicePrice").html("$" + price);
 
@@ -458,6 +461,8 @@ export class UserCtrl {
         $("#lblSellerEmail").html(sellerEmail);
 
         $("#lblSellerPhone").html(sellerPhone);
+
+        $("#lblSellerWebsite").html(sellerWebsite);
 
         $("#lblServicePriceAgain").html(price);
 
@@ -469,6 +474,9 @@ export class UserCtrl {
         );
 
         $("#lblServiceCategory").html(categoryName);
+
+
+        document.title = "Aussies Marketplace - " + name;
       })
       .catch((err) => {
         let errorMessage;
