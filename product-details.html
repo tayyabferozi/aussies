@@ -143,9 +143,8 @@
               <div class="breadcrumb-wrap text-center">
                 <h2 id="lblServiceName"></h2>
                 <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb" id="olServiceCategory">
-                    <!--<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Product Details</li>-->
+                  <ol class="breadcrumb" id="olServiceBreadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                   </ol>
                 </nav>
               </div>
@@ -155,7 +154,7 @@
       </section>
       <!-- breadcrumb-area-end -->
       <!-- product-details-area -->
-      <section class="product-details gray-bg pt-120 pb-120">
+      <section class="product-details gray-bg pt-5 pb-120">
         <div class="container">
           <div class="t-product-wrap">
             <div class="row">
@@ -536,24 +535,34 @@
                             ></a>
                           </li>
                           <li>
-                            <a href="#" class="text-left"
-                              >Phone No:<span
+                            <a href="#" class="text-left" onclick="return false;">
+                              Phone No:
+                              <span id="lnkSellerPhone" style="margin: 0 4px;">Click here</span>
+                              <span
                                 id="lblSellerPhone"
-                                style="margin: 0 4px"
-                                ><div class="lds-ripple">
+                                style="margin: 0 4px; display: none;"
+                                >
+                                <div class="lds-ripple">
                                   <div></div>
-                                  <div></div></div></span
-                            ></a>
+                                  <div></div>
+                                </div>
+                              </span>
+                            </a>
                           </li>
                           <li>
-                            <a href="#" class="text-left"
-                              >Website:<span
+                            <a href="#" class="text-left" onclick="return false;">
+                              Website:
+                              <span id="lnkSellerWebsite" style="margin: 0 4px;">Click here</span>
+                              <span
                                 id="lblSellerWebsite"
-                                style="margin: 0 4px"
-                                ><div class="lds-ripple">
+                                style="margin: 0 4px; display: none;"
+                                >
+                                <div class="lds-ripple">
                                   <div></div>
-                                  <div></div></div></span
-                            ></a>
+                                  <div></div>
+                                </div>
+                              </span>
+                            </a>
                           </li>
                         </ul>
                       </div>
@@ -617,9 +626,8 @@
                     <h5 class="vendor-sidebar-title text-center">
                       Service Tags
                     </h5>
-                    <p>Service tags will be displayed here</p>
-                    <!-- <ul>
-                      <li><a href="#">News</a></li>
+                    <ul id="ulServiceTags">
+                      <!-- <li><a href="#">News</a></li>
                       <li><a href="#">Business</a></li>
                       <li><a href="#">Who</a></li>
                       <li><a href="#">Elementor</a></li>
@@ -628,8 +636,8 @@
                       <li><a href="#">Bloger</a></li>
                       <li><a href="#">Clean</a></li>
                       <li><a href="#">Responsive</a></li>
-                      <li><a href="#">wordpress</a></li>
-                    </ul> -->
+                      <li><a href="#">wordpress</a></li> -->
+                    </ul>
                   </div>
                 </aside>
               </div>
@@ -930,6 +938,16 @@
       //     UserCtrl.GetServiceList();
       $(document).ready(function () {
         UserCtrl.getServiceDetails();
+      });
+    </script>
+    <script type="text/javascript">
+      $("#lnkSellerPhone").click(function(){
+        $("#lblSellerPhone").show();
+        $(this).hide();
+      });
+      $("#lnkSellerWebsite").click(function(){
+        $("#lblSellerWebsite").show();
+        $(this).hide();
       });
     </script>
   </body>

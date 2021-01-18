@@ -451,8 +451,19 @@ export class UserCtrl {
             "<h2 class='text-center'>No thumbnails to show</h2>"
           );
         };
+
+        if(!isEmpty(service.tags)){
+          service.tags.forEach((el) => {
+            let tagsMarkup = `<li><a href="#">`+el+`</a></li>`;
+            $("#ulServiceTags").append(tagsMarkup);
+          });
+        }
         
-        $("#dvServiceDescription").html("<h1>" + name + "</h1>" + description);
+        $("#lblServiceName").html(name);
+
+        $("#olServiceBreadcrumb").append(`<li class="breadcrumb-item active" aria-current="page">`+name+`</li>`);
+
+        $("#dvServiceDescription").html(description);
 
         $("#lblServicePrice").html("$" + price);
 
@@ -464,7 +475,7 @@ export class UserCtrl {
 
         $("#lblSellerWebsite").html(sellerWebsite);
 
-        $("#lblServicePriceAgain").html(price);
+        $("#lblServicePriceAgain").html("$" + price);
 
         $("#lblState").html(state);
 
