@@ -5,7 +5,8 @@ export const Constants = {
   defaultImageURI: "https://aussiesbackend.webnapp.com.au/images/",
   // defaultApiURI: "http://localhost:5000/api/",
   // defaultImageURI: "http://localhost:5000/images/",
-  defaultSupportAPI: "http://localhost:5001/api/",
+  defaultSupportAPI: "http://supportbackend.webnapp.com.au/api/",
+  // defaultSupportAPI: "http://localhost:5001/api/",
 };
 
 export const getParam = (paramName) => {
