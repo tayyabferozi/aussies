@@ -525,14 +525,19 @@
                             ></a>
                           </li>
                           <li>
-                            <a href="#" class="text-left"
-                              >Email:<span
+                            <a href="#" class="text-left" onclick="return false;">
+                              Email:
+                              <span id="lnkSellerEmail" style="margin: 0 4px;">Click here</span>
+                              <span
                                 id="lblSellerEmail"
-                                style="margin: 0 4px"
-                                ><div class="lds-ripple">
+                                style="margin: 0 4px; display: none;"
+                                >
+                                <div class="lds-ripple">
                                   <div></div>
-                                  <div></div></div></span
-                            ></a>
+                                  <div></div>
+                                </div>
+                              </span>
+                            </a>
                           </li>
                           <li>
                             <a href="#" class="text-left" onclick="return false;">
@@ -924,31 +929,91 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+      integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+      crossorigin="anonymous"
+    ></script>
+    
     <script async type="module" src="js/jquery.marketplace.js"></script>
-    <!-- <script>
-            $(document).ready(function () {
-                UserCtrl.GetServiceDetails();
-            });
-            $("#btnSubmit").click(function () {
-                UserCtrl.CreateSupport();
-            });
-        </script> -->
+    
     <script type="module">
       import { UserCtrl } from "./js/jquery.marketplace.js";
-      //     UserCtrl.GetServiceList();
+      import {
+        Constants,
+        getParam,
+        isEmpty,
+        generateSuccessMarkup,
+        generateErrorMarkup,
+        createCookie,
+        readCookie,
+      } from "./js/utils/utils.js";
+
+      $("#lnkSellerEmail").click(function(){
+        $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+          const service = getParam("service");
+          const { ip } = data;
+          axios.post(Constants.defaultApiURI + 'trackings/email', {
+              "service-id":service,
+              "ip":ip
+            })
+            .then((res) => {
+              const { success } = res.data;
+              if(success == true){
+                $("#lblSellerEmail").show();
+                $("#lnkSellerEmail").hide();
+              }
+            }, (error) => {
+              console.log(error);
+            });
+        });
+      });
+
+      $("#lnkSellerPhone").click(function(){
+        $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+          const service = getParam("service");
+          const { ip } = data;
+          axios.post(Constants.defaultApiURI + 'trackings/phone', {
+              "service-id":service,
+              "ip":ip
+            })
+            .then((res) => {
+              const { success } = res.data;
+              if(success == true){
+                $("#lblSellerPhone").show();
+                $("#lnkSellerPhone").hide();
+              }
+            }, (error) => {
+              console.log(error);
+            });
+        });
+      });
+
+      $("#lnkSellerWebsite").click(function(){
+        $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+          const service = getParam("service");
+          const { ip } = data;
+          axios.post(Constants.defaultApiURI + 'trackings/website', {
+              "service-id":service,
+              "ip":ip
+            })
+            .then((res) => {
+              const { success } = res.data;
+              if(success == true){
+                $("#lblSellerWebsite").show();
+                $("#lnkSellerWebsite").hide();
+              }
+            }, (error) => {
+              console.log(error);
+            });
+        });
+      });
+
       $(document).ready(function () {
         UserCtrl.getServiceDetails();
       });
     </script>
     <script type="text/javascript">
-      $("#lnkSellerPhone").click(function(){
-        $("#lblSellerPhone").show();
-        $(this).hide();
-      });
-      $("#lnkSellerWebsite").click(function(){
-        $("#lblSellerWebsite").show();
-        $(this).hide();
-      });
     </script>
   </body>
 </html>

@@ -336,8 +336,7 @@ export class UserCtrl {
         const sellerName = service.sellerId.name;
         const sellerEmail = service.sellerId.email;
         const sellerPhone = service.sellerId.phone;
-        // const sellerWebsite = service.sellerId.website;
-        const sellerWebsite = "Website here";
+        const sellerWebsite = service.sellerId.website;
         const categoryName = service.categoryId.name;
         const state = service.state;
 
@@ -469,10 +468,13 @@ export class UserCtrl {
 
         $("#lblSellerName").html(sellerName);
 
+        $("#lnkSellerEmail").html(sellerEmail.charAt(0) + "******@" + sellerEmail.split("@")[1]);
         $("#lblSellerEmail").html(sellerEmail);
 
+        $("#lnkSellerPhone").html(sellerPhone.charAt(0) + sellerPhone.charAt(1) + "******" + sellerPhone.charAt(sellerPhone.length-1));
         $("#lblSellerPhone").html(sellerPhone);
 
+        $("#lnkSellerWebsite").html(sellerWebsite.charAt(0) + sellerWebsite.charAt(1) + "******." + sellerWebsite.split(".").slice(-1)[0]);
         $("#lblSellerWebsite").html(sellerWebsite);
 
         $("#lblServicePriceAgain").html("$" + price);
