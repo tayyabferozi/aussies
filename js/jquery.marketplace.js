@@ -468,14 +468,20 @@ export class UserCtrl {
 
         $("#lblSellerName").html(sellerName);
 
-        $("#lnkSellerEmail").html(sellerEmail.charAt(0) + "******@" + sellerEmail.split("@")[1]);
-        $("#lblSellerEmail").html(sellerEmail);
+        if(!isEmpty(sellerEmail)){
+          $("#lnkSellerEmail").html(sellerEmail.charAt(0) + "******@" + sellerEmail.split("@")[1]);
+          $("#lblSellerEmail").html(sellerEmail);
+        }
 
-        $("#lnkSellerPhone").html(sellerPhone.charAt(0) + sellerPhone.charAt(1) + "******" + sellerPhone.charAt(sellerPhone.length-1));
-        $("#lblSellerPhone").html(sellerPhone);
+        if(!isEmpty(sellerPhone)){
+          $("#lnkSellerPhone").html(sellerPhone.charAt(0) + sellerPhone.charAt(1) + "******" + sellerPhone.charAt(sellerPhone.length-1));
+          $("#lblSellerPhone").html(sellerPhone);
+        }
 
-        $("#lnkSellerWebsite").html(sellerWebsite.charAt(0) + sellerWebsite.charAt(1) + "******." + sellerWebsite.split(".").slice(-1)[0]);
-        $("#lblSellerWebsite").html(sellerWebsite);
+        if(!isEmpty(sellerWebsite)){
+          $("#lnkSellerWebsite").html(sellerWebsite.charAt(0) + sellerWebsite.charAt(1) + "******." + sellerWebsite.split(".").slice(-1)[0]);
+          $("#lblSellerWebsite").html(sellerWebsite);
+        }
 
         $("#lblServicePriceAgain").html("$" + price);
 
