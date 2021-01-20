@@ -25,6 +25,14 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 
+    <style>
+      .product-details-content p {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 20px;
+      }
+    </style>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NC8HSD4LB"></script>
     <script>
@@ -136,12 +144,13 @@
       <section
         class="breadcrumb-area d-flex align-items-center"
         data-background="img/bg/breadcrumb_bg.jpg"
+        style="min-height: auto;"
       >
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <div class="breadcrumb-wrap text-center">
-                <h2 id="lblServiceName"></h2>
+              <div class="breadcrumb-wrap text-center" style="padding: 0px;">
+                <h2 id="lblServiceName" style="color: black;"></h2>
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb" id="olServiceBreadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -167,7 +176,7 @@
                     </div>
                   </div>
                   <div class="product-details-tab">
-                    <ul class="nav product-tab" id="myTab" role="tablist">
+                    <!-- <ul class="nav product-tab" id="myTab" role="tablist">
                       <li class="nav-item">
                         <a
                           class="nav-link btn active"
@@ -180,7 +189,7 @@
                           >Description</a
                         >
                       </li>
-                      <!-- <li class="nav-item">
+                      <li class="nav-item">
                         <a
                           class="nav-link btn"
                           id="product-reviews-tab"
@@ -203,7 +212,7 @@
                           aria-selected="false"
                           >Support</a
                         >
-                      </li> -->
+                      </li>
                       <li class="nav-item">
                         <a
                           class="nav-link btn"
@@ -227,7 +236,7 @@
                         aria-labelledby="item-details-tab"
                       >
                         <div class="product-details-content">
-                          <!--<h3><label id="lblServiceName"></label></h3>-->
+                          <h3><label id="lblServiceName"></label></h3>
                           <div id="dvServiceDescription">
                             <div class="lds-ripple">
                               <div></div>
@@ -236,7 +245,7 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div
+                      <div
                         class="tab-pane fade"
                         id="product-reviews"
                         role="tabpanel"
@@ -457,7 +466,15 @@
                             and NOT included in purchase files.
                           </p>
                         </div>
-                      </div> -->
+                      </div>
+                    </div> -->
+                    <div class="product-details-content">
+                      <div id="dvServiceDescription" style="background: #fff; border: 1px solid #f2f2f2; padding: 35px 30px;">
+                        <div class="lds-ripple">
+                          <div></div>
+                          <div></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -483,19 +500,28 @@
                     </div>
                     <div class="item-sidebar-btn mb-25">
                       <a href="#" class="btn">
+                        Starts from 
                         <span id="lblServicePrice">
                           <div class="lds-ripple">
                             <div></div>
                             <div></div>
                           </div>
-                        </span> Buy Now
+                        </span>
                       </a>
                       <a
                         href="#"
                         class="btn item-prev-btn"
                         data-toggle="modal"
-                        data-target="#contactModal"
+                        data-target="#contactModal" 
+                        style="margin-bottom: 12px;"
                         >Contact Seller</a
+                      >
+                      <a
+                        href="#"
+                        class="btn"
+                        onclick="history.back()"
+                        style="background-color: black;"
+                        >Back</a
                       >
                     </div>
                   </div>
@@ -510,6 +536,7 @@
                     <div class="vendor-info mb-25">
                       <h4>Seller Info</h4>
                     </div>
+					          <div style="font-size: 12px; padding-bottom:15px; color: blue;">Click on Email / Phone for full details</div>
                     <div class="widget mb-40">
                       <div class="sidebar-cat">
                         <input type="hidden" id="CompanyID" />
@@ -599,7 +626,10 @@
                     </div>
                   </div>
                   <div class="sidebar-item-info">
-                    <h5 class="vendor-sidebar-title text-center">
+                    <!-- <h5 class="vendor-sidebar-title text-center">
+                      Service Information
+                    </h5> -->
+                    <h5 class="vendor-wrap-title">
                       Service Information
                     </h5>
                     <ul>
@@ -628,21 +658,13 @@
                     </ul>
                   </div>
                   <div class="product-sidebar-tag">
-                    <h5 class="vendor-sidebar-title text-center">
+                    <!-- <h5 class="vendor-sidebar-title text-center">
+                      Service Tags
+                    </h5> -->
+                    <h5 class="vendor-wrap-title">
                       Service Tags
                     </h5>
-                    <ul id="ulServiceTags">
-                      <!-- <li><a href="#">News</a></li>
-                      <li><a href="#">Business</a></li>
-                      <li><a href="#">Who</a></li>
-                      <li><a href="#">Elementor</a></li>
-                      <li><a href="#">woocommerce</a></li>
-                      <li><a href="#">Creative</a></li>
-                      <li><a href="#">Bloger</a></li>
-                      <li><a href="#">Clean</a></li>
-                      <li><a href="#">Responsive</a></li>
-                      <li><a href="#">wordpress</a></li> -->
-                    </ul>
+                    <ul id="ulServiceTags"></ul>
                   </div>
                 </aside>
               </div>
@@ -864,7 +886,7 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Service Info</h5>
+            <h5 class="modal-title" id="contactModalTitle">Service Info</h5>
             <button
               type="button"
               class="close"
@@ -897,7 +919,7 @@
                   id="Message"
                   placeholder="Your Message"
                 ></textarea>
-                <button class="btn" id="btnSubmit">Submit Request</button>
+                <button class="btn" id="btnSubmit">Send Request</button>
               </div>
             </div>
           </div>

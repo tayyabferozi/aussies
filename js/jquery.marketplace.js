@@ -459,8 +459,12 @@ export class UserCtrl {
         }
         
         $("#lblServiceName").html(name);
+        $("#contactModalTitle").html(name);
 
-        $("#olServiceBreadcrumb").append(`<li class="breadcrumb-item active" aria-current="page">`+name+`</li>`);
+        $("#olServiceBreadcrumb").append(`
+          <li class="breadcrumb-item active" aria-current="page">
+            <a style="color:inherit;" href="index.html?category=${categoryName}">${categoryName}</a>
+          </li>`);
 
         $("#dvServiceDescription").html(description);
 
@@ -492,8 +496,7 @@ export class UserCtrl {
           `index.html?seller=${service.sellerId._id}`
         );
 
-        $("#lblServiceCategory").html(categoryName);
-
+        $("#lblServiceCategory").html(`<a style="color:inherit;" onMouseOver="this.style.color='#fa5719'" onMouseOut="this.style.color='inherit'" href="index.html?category=${categoryName}">${categoryName}</a>`);
 
         document.title = "Aussies Marketplace - " + name;
       })
