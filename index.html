@@ -723,10 +723,10 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="single-product t-single-product mb-30">
                           <div class="product-img">
-                            <a href="product-details.html?service=${serviceId}"><img src="${heroThumbnail}" alt="img"></a>
+                            <a href="product-details.html?service=${serviceId}&name=${serviceName.replace(/ /g,"-").toLowerCase()}"><img src="${heroThumbnail}" alt="img"></a>
                           </div>
                           <div class="t-product-overlay" style="position:relative;">
-                            <h5><a href="product-details.html?service=${serviceId}">${serviceName}</a></h5>
+                            <h5><a href="product-details.html?service=${serviceId}&name=${serviceName.replace(/ /g,"-").toLowerCase()}">${serviceName}</a></h5>
                             <span><a href="index.html?category=${
                               serviceCategory + "&state=" + selectedState
                             }">${serviceCategory}</a> </span>
@@ -738,7 +738,7 @@
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>-->
-                                <a href="product-details.html?service=${serviceId}">More Details</a>
+                                <a href="product-details.html?service=${serviceId}&name=${serviceName.replace(/ /g,"-").toLowerCase()}">More Details</a>
                               </div>
                               <h6>$${servicePrice}</h6>
                             </div>
